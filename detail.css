@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.boxAll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.box2 {
+    width: 80%;
+    height: 100%;
+    margin: 110px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.box2 .navx {
+    /* justify-content: space-around; */
+    /* width: 400px; */
+    height: 100%;
+    width: 73.5%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.box2 .navx .detaillist {
+    width: 100%;
+    height: 50%;
+}
+
+.box2 .navx .nextlist {
+    width: 100%;
+    height: 100%;
+}
+
+.box2 .navx .nextlist dt {
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.box2 .navx .nextlist dt i {
+    font-style: normal;
+    margin-left: 30px;
+    font-size: 25px;
+    color: #aaa;
+}
+
+.box2 .navx .nextlist dd {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box2 .navx .nextlist dd img {
+    margin-top: 9px;
+    height: 100%;
+    width: 97%;
+    margin-left: 2%;
+}
+
+.box2 .navx .nextlist .nextouba {
+    width: 97%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+}
+.box2 .navx .nextlist .nextouba p:nth-of-type(1){
+    width: 100%;
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+}
+.box2 .navx .nextlist .nextouba p:nth-of-type(1) span:nth-child(1){
+    font-size: 23px;
+    font-weight: bold;
+    color: #aaa;
+    height: 50%;
+    align-items: flex-end;
+    
+}
+.box2 .navx .nextlist .nextouba p:nth-of-type(1) span:nth-child(2){
+    flex: 1;
+    font-size: 20px;
+    align-items: center;
+}
+
+.box2 .navx .nextlist .nextouba p:nth-of-type(2){
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-top: 1px solid #ddd;
+}
+.box2 .navx .nextlist .nextouba p:nth-of-type(2) button{
+    width: 230px;
+    height: 50px;
+    background-color: darkgoldenrod;
+    margin-right: 20px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.box2 .nav1 {
+    /* background-color: chartreuse; */
+    width: 25%;
+    height: 100%;
+    margin-left: 10px;
+   
+}
+
+.box2 .nav1 .rightdetail {
+    width: 100%;
+    height: 1600px;
+}
+
+
+
+.box3 {
+    width: 100%;
+    height: 437px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.box3 .aboutnet{
+    width: 100%;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333333;
+}
+.box3 .aboutnet h1{
+    height: 67px;
+    width: 70%;
+    font-size: 25px;
+    line-height: 77px;
+    margin-left: -10%;
+    color: #999999;
+}
+.box3 .aboutnet .netcont{
+    flex: 1;
+    width: 70%;
+    height: 100%;
+    margin-left: -10%;
+    color: #dddddd;
+    display: flex;
+    justify-content: space-evenly;
+}
+.box3 .aboutnet .netcont section{
+    width: 25%;
+    height: 100%;
+}
+.box3 .aboutnet .netcont section dl{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.box3 .aboutnet .netcont section dl dt{
+    height: 50px;
+    width: 100%;
+    color: #999999;
+    font-size: 18px;
+    line-height: 50px;
+}
+.box3 .aboutnet .netcont section dl dd{
+    color: #dddddd;
+    font-size: 17px;
+    height: 35px;
+    margin-top: 11px;
+    line-height: 38px;
+    cursor: pointer;
+}
+.box3 .aboutnet .netcont section dl dd:hover{
+    color: black;
+}
+.box3 .aboutnet .netcont section dl img{
+    position: absolute;
+    left: 500px;
+    width: 100px;
+    height: 100px;
+    top: 133px;
+    /* display: none; */
+}
+
+.box3 .banquan{
+    height: 86px;
+    background-color: #222222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.box3 .banquan p{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: -10%;
+    color: #848f96;
+    font-size: 19px;
+}
+
+span{
+    display: flex;
+    width: 100%;
+}
+i{
+    font-style: normal;
+}
