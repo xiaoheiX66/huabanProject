@@ -5,33 +5,51 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>花瓣</title>
     <script src="./ajax.js"></script>
     <link rel="stylesheet" href="./list.css" />
-    <link rel="stylesheet" href="./detail.css">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_2970361_1yzf5hdowop.css">
+    <!-- <link rel="stylesheet" href="./detail.css"> -->
+    <link rel="stylesheet" href="./css/headsubcss.css">
 
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2970361_1yzf5hdowop.css">
+    <script src="./cookie.js"></script>
 </head>
 
 <body>
     <div class="box">
         <div class="headss">
             <section>
-               <div>
-                <p style="font-style: normal;height: 70px;width: 220px;" class="huabanImg">
-                    <img src="./logos.png" alt="" width="100%" height="100%">
+                <div>
+                    <p style="font-style: normal;height: 70px;width: 220px;" class="huabanImg">
+                        <img src="./logos.png" alt="" width="100%" height="100%">
                     </p>
-                <p>首页</p>
-                <p style="cursor: pointer;">设计师&nbsp;<i class="iconfont icon-xiajiantou1"></i></p>  
-                <p>设计服务</p>
-               </div>
+                    <p>首页</p>
+                    <p style="cursor: pointer;">设计师&nbsp;<i class="iconfont icon-xiajiantou1"></i></p>
+                    <p>设计服务</p>
+                </div>
             </section>
             <section>
-               <div>
-                <button style="width: 130px;height: 50px;background-color: #ccc;border-radius: 5px;font-size: 20px;">登录</button>
-                <button
-                    style="width: 130px;height: 50px;background-color: bisque;margin-left: 30px;border-radius: 5px;font-size: 20px;color: #ffffff;">注册</button>
-               </div>
+                <div style="position: relative;">
+                    <div class="newParentTop">
+                        <button class="comeBtnback">登录</button>
+                        <button  class="registrback">退出</button>
+                    </div>
+                    <button class="submitTop">登录</button>
+                    <button class="registrTop">注册</button>
+                </div>
+            </section>
+            <section id="formParentTop" style="position: fixed;width: 600px;height: 520px;background: url(./dactivebg.gif);top: 30%;left: 35%;
+            border-radius: 5px;
+            ">
+                <form id="formSubRegis"
+                    style="display: flex;width: 100%;height: 100%;flex-direction: column;justify-content: center;align-items: center;">
+                    <input type="text" placeholder="请输入账号" style="width: 420px;height: 50px;border-radius: 12px;"
+                        id="username"><br>
+                    <input type="password" placeholder="请输入密码" style="width: 420px;height: 50px;border-radius: 12px;"
+                        id="password" autocomplete><br>
+                    <button
+                        style="background-color: darkgoldenrod;width: 310px;height: 50px;border-radius: 8px;opacity: 0.8;color: #ffffff;">登录</button>
+                </form>
             </section>
         </div>
         <div class="nav">
@@ -70,13 +88,13 @@
             <h1>花瓣美思，花瓣网旗下网站</h1>
             <div class="netcont">
                 <section>
-                <dl>
-                    <dt>花瓣美思</dt>
-                    <dd>关于美思</dd>
-                    <dd>雇主问题</dd>
-                    <dd>设计师问题</dd>
-                    <dd>使用帮助</dd>
-                </dl>
+                    <dl>
+                        <dt>花瓣美思</dt>
+                        <dd>关于美思</dd>
+                        <dd>雇主问题</dd>
+                        <dd>设计师问题</dd>
+                        <dd>使用帮助</dd>
+                    </dl>
                 </section>
                 <section>
                     <dl>
@@ -116,25 +134,36 @@
         let nav_list = document.querySelector(".nav_list")
         let nav_list2 = document.querySelector(".nav_list2")
         let list = document.querySelector(".list")
-       
-        
+        let submitTop = document.querySelector(".submitTop")
+        let registrTop = document.querySelector(".registrTop")
+
+        let formParentTop = document.querySelector("#formParentTop")
+        let formSubRegis = document.querySelector("#formSubRegis")
+        let username = document.querySelector("#username")
+        let password = document.querySelector("#password")
+
+        // 登录后
+        let newParentTop = document.querySelector(".newParentTop")
+        let comeBtnback = document.querySelector(".comeBtnback")
+        let registrback = document.querySelector(".registrback")
         nav();
         // nav
         function nav() {
-          
+
             pAjax({
                 url: "./nav.json",
-            }).then((res)=>{
-             let res1 = JSON.parse(res)
-            let str = "";
-             res1.forEach((item,index) => {
-                        return str += `
+            }).then((res) => {
+                let res1 = JSON.parse(res)
+                let str = "";
+                res1.forEach((item, index) => {
+                    return str += `
                             <a class="item" style="cursor:pointer;" href="#" index=${index} data=${item.category}>${item.name}</a>
                             `
-             })
-             nav_list.innerHTML = str;
-            //  smallCont.innerHTML = str;
+                })
+                nav_list.innerHTML = str;
+                //  smallCont.innerHTML = str;
             })
+
         }
 
         // list
@@ -144,18 +173,18 @@
                 let category = e.target.getAttribute('data')
                 if (!category) {
                     pAjax({
-                        url:"/api/api/v1/services/",
-                    }).then((res)=>{
+                        url: "https://muse.huaban.com/api/v1/services/",
+                    }).then((res) => {
                         let res2 = JSON.parse(res)
-                        let str ="";
-                                 res2.forEach((item,index) => {
-                                let price;
-                                if (item.price == 0) {
-                                    price = "价格面议"
-                                } else {
-                                    price = `￥${item.price}/单`
-                                }
-                                return str += `
+                        let str = "";
+                        res2.forEach((item, index) => {
+                            let price;
+                            if (item.price == 0) {
+                                price = "价格面议"
+                            } else {
+                                price = `￥${item.price}/单`
+                            }
+                            return str += `
                                 <dl>
                                 <dt>
                                     <a href="./detail.html?${item.service_id}">
@@ -168,25 +197,25 @@
                                 ">${price}</a></dd>
                                  </dl>
                                 `
-                                         })
-                            list.innerHTML = str;
+                        })
+                        list.innerHTML = str;
                     })
                     return
                 }
                 pAjax({
-                    url:"/api/api/v1/services/",
+                    url: "/api/api/v1/services/",
                     data: `category=${category}`,
-                }).then((res)=>{
-                             let res1 = JSON.parse(res)
-                        let str = ""
-                        res1.forEach((item,index) => {
-                            let price;
-                                if (item.price == 0) {
-                                    price = "价格面议"
-                                } else {
-                                    price = `￥${item.price}/单`
-                                }
-                            return str += `
+                }).then((res) => {
+                    let res1 = JSON.parse(res)
+                    let str = ""
+                    res1.forEach((item, index) => {
+                        let price;
+                        if (item.price == 0) {
+                            price = "价格面议"
+                        } else {
+                            price = `￥${item.price}/单`
+                        }
+                        return str += `
                                 <dl>
                                 <dt>
                                     <a href="./detail.html?id=${item.service_id}">
@@ -200,51 +229,51 @@
                                 ">${price}</a></dd>
                                  </dl>
                                 `
-                        })
-                        list.innerHTML = str;
+                    })
+                    list.innerHTML = str;
                 })
-                 let index = e.target.getAttribute('index')
-            pAjax({
-                url:"./nav.json",
-            }).then((res)=>{
-                let res1 = JSON.parse(res);
-                console.log(res1);
-                console.log("index==",index);
-                let str = "";
-               res1[index].sub.forEach((item)=>{
-                    return str +=`
+                let index = e.target.getAttribute('index')
+                pAjax({
+                    url: "./nav.json",
+                }).then((res) => {
+                    let res1 = JSON.parse(res);
+                    console.log(res1);
+                    console.log("index==", index);
+                    let str = "";
+                    res1[index].sub.forEach((item) => {
+                        return str += `
                     <a class="item1" style="cursor:pointer;
                    margin-left:10px;color:black;
                     " href="#" category=${category} grandson=${item.sub_category}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${item.name}</a>
                     `
-               })
-               nav_list2.innerHTML = str;
-            })
+                    })
+                    nav_list2.innerHTML = str;
+                })
             }
-           
+
         }
-        nav_list2.onclick = function(e){
-            if(e.target.className == 'item1'){
+        nav_list2.onclick = function (e) {
+            if (e.target.className == 'item1') {
                 let grandson = e.target.getAttribute('grandson')
                 let category = e.target.getAttribute('category')
                 pAjax({
-                    url:"/api/api/v1/services/",
-                    data:{
-                        category:category,
-                        sub_category:grandson
+                    url: "https://muse.huaban.com/api/v1/services/",
+                    data: {
+                        category: category,
+                        sub_category: grandson
                     },
-                }).then((res)=>{
+                }).then((res) => {
                     let res1 = JSON.parse(res)
                     console.log(res1);
                     let str = ""
-                        res1.forEach((item,index) => {
-                            let price;
-                                if (item.price == 0) {
-                                    price = "价格面议"
-                                } else {
-                                    price = `￥${item.price}/单`
-                                }
-                            return str += `
+                    res1.forEach((item, index) => {
+                        let price;
+                        if (item.price == 0) {
+                            price = "价格面议"
+                        } else {
+                            price = `￥${item.price}/单`
+                        }
+                        return str += `
                                 <dl>
                                 <dt>
                                     <a href="./detail.html?id=${item.service_id}">
@@ -258,27 +287,28 @@
                                 ">${price}</a></dd>
                                  </dl>
                                 `
-                        })
-                        list.innerHTML = str;
+                    })
+                    list.innerHTML = str;
                 })
             }
         }
-        
+
         allData()
-        function allData(){
+
+        function allData() {
             ajax({
-                    url: "/api/api/v1/services/",
-                    success: function (res) {
-                        let res1 = JSON.parse(res)
-                        let str = ""
-                        res1.forEach((item,index) => {
-                            let price;
-                                if (item.price == 0) {
-                                    price = "价格面议"
-                                } else {
-                                    price = `￥${item.price}/单`
-                                }
-                            return str += `
+                url: "https://muse.huaban.com/api/v1/services/",
+                success: function (res) {
+                    let res1 = JSON.parse(res)
+                    let str = ""
+                    res1.forEach((item, index) => {
+                        let price;
+                        if (item.price == 0) {
+                            price = "价格面议"
+                        } else {
+                            price = `￥${item.price}/单`
+                        }
+                        return str += `
                                 <dl>
                                 <dt>
                                     <a href="./detail.html?id=${item.service_id}">
@@ -290,14 +320,61 @@
                                 ">${price}</a></dd>
                                  </dl>
                                 `
-                        })
-                        list.innerHTML = str;
+                    })
+                    list.innerHTML = str;
 
-                    }
-                })
+                }
+            })
         }
         // 顶部稀烂
-      
+        //   点击登录
+        submitTop.onclick = function (e) {
+            formParentTop.style.display = "block"
+        }
+
+        formSubRegis.onsubmit = function (e) {
+            e.returnValue = false;
+            let user = username.value;
+            let pwd = password.value;
+            // console.log('username='+user,'password=',pwd);
+            pAjax({
+                url: `http://localhost:8088/sub?username=${user}&password=${pwd}`,
+            }).then((res) => {
+
+                let res1 = JSON.parse(res)
+                console.log('res1', res1);
+                console.log('res1', res1.code);
+                if (res1.code == false) {
+                    alert('登陆失败！')
+                    username.value = ""
+                    password.value = ""
+                } else {
+                    //  setCookie(`username=${user};`)
+                    alert('登陆成功！')
+                    setCookie(`username=${user};`)
+                    let subres = getCookie("username")
+                    console.log("subres", subres);
+                    newParentTop.style.display = "flex"
+                    formParentTop.style.display = "none"
+                    comeBtnback.innerHTML = "@"+subres;
+                    comeBtnback.style.borderBottom ="4px solid #aaa"
+                    comeBtnback.style.fontSize = "15px"
+                    username.value = "";
+                    password.value = "";
+                }
+            }).catch(err => console.log(err))
+        }
+        registrTop.onclick = function (e) {
+            formParentTop.style.display = "none"
+            // location.reload();  
+        }
+        //    退出
+        registrback.onclick = function () {
+             deleteCookie(`username=${username.value},-1`)
+             newParentTop.style.display="none"
+            formParentTop.style.display = "none"
+            location.reload();
+        }
     </script>
 </body>
 

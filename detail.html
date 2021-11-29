@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./ajax.js"></script>
-    <link rel="stylesheet" href="./list.css">
     <link rel="stylesheet" href="./detail.css">
+    <link rel="stylesheet" href="./css/headsubcss.css">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2970361_1yzf5hdowop.css">
+    <script src="./cookie.js"></script>
 </head>
 
 <body>
@@ -18,19 +19,30 @@
             <div class="headss">
                 <section>
                     <div>
-                        <p style="font-style: normal;height: 70px;width: 220px;" class="huabanImg">
+                        <ul class="logoTopcont">
+                            <li style="font-style: normal;height: 70px;width: 220px;" class="huabanImg">
                             <img src="./logos.png" alt="" width="100%" height="100%">
-                            </p>
-                        <p>首页</p>
-                        <p>设计师&nbsp;<i class="iconfont icon-xiajiantou1"></i></p>
-                        <p>设计服务</p>
+                            </li>
+                        <li>首页</li>
+                        <li style="cursor: pointer;position: relative;" class="despricer">设计师&nbsp;<i class="iconfont icon-xiajiantou1"></i>
+                          <ul style="position: absolute;width: 460px;height: 345px;background-color: #ffffff;z-index: 10;
+                          top: 65px;left: -45px;border: 1px solid #ddd; " class="showCont">
+                              <li>窝嫩叠</li>
+                          </ul>
+                        </li>
+                        <li>设计服务</li>
+                        </ul>
+                        
                     </div>
                 </section>
                 <section>
-                    <div>
-                        <button style="width: 100px;height: 40px;background-color: #ccc;border-radius: 5px;">登录</button>
-                        <button
-                            style="width: 100px;height: 40px;background-color: bisque;margin-left: 30px;border-radius: 5px;">注册</button>
+                    <div style="position: relative;">
+                        <div class="newParentTop">
+                            <button class="comeBtnback">登录</button>
+                            <button class="registrback">退出</button>
+                        </div>
+                        <button class="submitTop">登录</button>
+                        <button class="registrTop">注册</button>
                     </div>
                 </section>
             </div>
@@ -116,9 +128,20 @@
         let nextBottom = document.querySelector(".nextBottom")
         let nextouba = document.querySelector(".nextouba")
         let rightdetail = document.querySelector(".rightdetail")
+        
+        let showCont = document.querySelector(".showCont")
+        let despricer = document.querySelector(".despricer")
+        console.log("showCont",despricer);
 
+        // 登录后
+        let username = document.querySelector("#username")
+        let password = document.querySelector("#password")
 
+        let newParentTop = document.querySelector(".newParentTop")
 
+        let comeBtnback = document.querySelector(".comeBtnback")
+        let registrback = document.querySelector(".registrback")
+        let flag = false;
         window.onload = function () {
             let res = location.search.match(/\?id=(\w+)/)
             console.log('res=', res);
@@ -168,15 +191,7 @@
                 // console.log("res1.complete_in",res1.complete_in.number);
                 res1.cover.forEach((item, index) => {
                     console.log('item=',res1.created_at);
-                    //86400000
-                    //3600000
-                    // 时间判断
-                    /*
-                    day:24*60*60*60*1000
-                    hours:60*60*1000
-                    seconds:60*1000
-                    thirds:1000
-                    */
+                   
                     console.log('responsetime',res1.user.extra.response_time);
                     let res = (res1.user.extra.response_time /(60*60*24))
                     
@@ -299,12 +314,37 @@
                 })
                 rightdetail.innerHTML = str3;
             })
+            // 登录验证
+            let resSubs = getCookie("username")
+            console.log("resubsDetail",resSubs); 
+            if(!resSubs){
+                alert("您还未登录，请先登录！！")
+                window.location.href ="./list.html";
+            }else{
+                newParentTop.style.display="flex";
+                comeBtnback.innerHTML = "@"+resSubs;
+                comeBtnback.style.borderBottom ="4px solid #aaa"
+                comeBtnback.style.fontSize = "15px"
+            }
 
+            // 点击退出,回到主页
+            registrback.onclick = function(){
+                if(!flag){
+                    window.confirm("确定要退出吗？")
+                }
+                    flag = false;
+                     deleteCookie("username");
+                window.location.href="./list.html";
+            }
 
         }
         // 回到顶部
         // function myScroll(){
         //     let topY=document.body.scrollTop||document.documentElement.scrollTop;
+
+        // }
+        // 点击显现
+        // showCont.onclick = function(e){
 
         // }
    </script>
