@@ -1,11 +1,8 @@
 let express = require('express')
 let mysql = require('mysql')
-// let {
-//     createProxyMiddleware
-// } = require('http-proxy-middleware')
 let bodyParser = require('body-parser')
-let jsonParser = bodyParser.urlencoded();
 
+let app = express();
 let connects = mysql.createConnection({
     host: "localhost",
     user: "Xn",
@@ -13,60 +10,28 @@ let connects = mysql.createConnection({
     database: "DatabaseTest"
 })
 connects.connect();
-let app = express();
 
 app.use(express.static('./'));
-
-// app.use(
-//     '/api',
-//     createProxyMiddleware({
-//         target: "https://muse.huaban.com/",
-//         changeOrigin: true,
-//         pathRewrite: {
-//             "^/api": "/",
-//         },
-//     })
-// );
-
 // submit
-app.get("/sub", (req, res) => {
-            let {
-                username,
-                password
-            } = req.query;
-            connects.query(`select * from user where username='${username}' and password='${password}'`, (err, data) => {
-                    if(err){
-                        res.send({code:false,msg:req.query,status:400})
-                    console.log('登陆失败');
-                    }
-                        res.send({code:true,msg:req.query,status:200})
-                        console.log('登陆成功');
-                
-                // if (data[0]) {
-                //     res.send({
-                //         code: true,
-                //         msg: req.query,
-                //         status: 200
-                //     })
-                //     console.log('登陆成功');
-                // }else{
-                //      res.send({
-                //         code: false,
-                //         msg: req.query,
-                //         status: 400
-                //     })
-                //     console.log('登陆失败');
-                // }
-               
-            })
-             
-            })
+app.get("/login",(req,res)=>{
+    let { username,password } = req.query
+    connects.query(`SELECT * FROM user WHERE username='${username}' AND password='${password}'`,(err,data)=>{
+        // console.log("req.query",req.query);
+        // console.log("data[0]==",data);
+        if(data[0]){
+            res.send({code:true,msg:"登陆成功"})
+            console.log("登陆成功");
+            return;
+        }
+        res.send({code:false,msg:"登陆失败"})
+        console.log("登陆失败");
+    })
+})
+
             // register
+let jsonParser = bodyParser.urlencoded();
 app.post("/reg", jsonParser, (req, res) => {
-                let {
-                    username,
-                    password
-                } = req.body
+                let { username,password} = req.body
                 connects.query(`insert into user values(${null},'${username}','${password}')`, (err, data) => {
                     if (err) {
                         res.send({
@@ -76,15 +41,25 @@ app.post("/reg", jsonParser, (req, res) => {
                         })
                         console.log('req.body', req.body);
                     }
-                    res.send({
-                        code: true,
-                        msg: "注册成功",
-                        status: 200
-                    })
+                    // res.send({
+                    //     code: true,
+                    //     msg: "注册成功",
+                    //     status: 200
+                    // })
                     console.log('req.body', req.body);
 
                 })
             })
+
+// app.get("/list",(req,res)=>{
+//     connects.query("select * from testtable",(err,data)=>{
+//         if(data[0]){
+//             res.send({code:200,msg:"请求成功"})
+//             console.log("data==",data);
+//         }
+//         res.send({code:400,msg:"请求失败"})
+//     })
+// })
 
  app.listen(8088, () => {
                 console.log('8088 is listning....');

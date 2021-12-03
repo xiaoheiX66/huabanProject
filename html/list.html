@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>花瓣</title>
+    <script src="../ajax.js"></script>
+    <link rel="stylesheet" href="../css/list.css" />
+    <!-- <link rel="stylesheet" href="./detail.css"> -->
+    <link rel="stylesheet" href="../css/headsubcss.css">
+
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2970361_1yzf5hdowop.css">
+    <script src="../js/cookie.js"></script>
+    <!-- <script src="./js/jqueryd.js"></script> -->
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../jquery/jquery.min.js"></script>
+    <script src="../validation/dist/jquery.validate.min.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="headss">
+            <section>
+                <div>
+                    <p style="font-style: normal;height: 70px;width: 220px;" class="huabanImg">
+                        <img src="../img/logos.png" alt="" width="100%" height="100%">
+                    </p>
+                    <p>首页</p>
+                    <p style="cursor: pointer;">设计服务&nbsp;<i class="iconfont icon-xiajiantou1"></i></p>
+                    <p>设计师</p>
+                </div>
+            </section>
+            <section>
+                <div style="position: relative;">
+                    <div class="newParentTop">
+                        <button class="comeBtnback">登录</button>
+                        <button  class="registrback">退出</button>
+                    </div>
+                    <button class="submitTop">登录</button>
+                    <button class="registrTop">注册</button>
+                </div>
+            </section>
+            <section id="formParentTop">
+                <form id="formSubRegis" action="">
+                    <!-- <input type="text" placeholder="请输入账号" id="username"><br>
+                    <input type="password" placeholder="请输入密码" id="password" autocomplete><br>
+                    <button id="btnSub">登录</button> -->
+                   
+                        <!-- 由数字 字母组成 开头必须是字母 长度为2-8 -->
+                        
+                        <p
+                        style="display: flex;flex-direction: row;width: 90%
+                        ;justify-content: flex-start;align-items: center;"
+                        ><i
+                        style="color: beige;display: block;width: 80px;height: 50px;line-height: 80px;border-bottom: 2px solid #bbb;"
+                        >用户名:</i><input type="text" name="username" id="username" placeholder="input username" /></p>
+                   
+                    
+                       <!-- 开头必须1 第二位数[3-9] 后面9位数字 -->
+                        
+                        <p
+                        style="display: flex;flex-direction: row;width: 90%;justify-content: flex-start;align-items: center;"
+                        ><i
+                        style="color: beige;display: block;width: 80px;height: 50px;line-height: 80px;border-bottom: 2px solid #bbb;"
+                        >手机号:</i><input type="text" name="tels" id="tels" placeholder="input tellphone" /></p>
+                      
+                   
+                   
+                       <!-- 由数字 字母组成 长度6-14 -->
+                        <p
+                        style="display: flex;flex-direction: row;width: 90%;justify-content: flex-start;align-items: center;"
+                        ><i
+                        style="color: beige;display: block;width: 80px;height: 50px;line-height: 80px;border-bottom: 2px solid #bbb;"
+                        >密码&nbsp;:</i><input type="password" name="password" id="pws1" placeholder="input password" /></p>
+                       
+                    
+                    <p><button id="btnSub">登录</button></p>
+                </form>
+            </section>
+        </div>
+        <div class="nav">
+            <div class="nav1">
+                <div class="content">
+                    <div class="label">分类:</div>
+                    <nav class="nav_list">
+                        <!-- <a class="item" href="/services/">全部</a> -->
+                        <!-- <a class="item item2">全部</a> -->
+                    </nav>
+                </div>
+            </div>
+            <div class="nav_sub">
+                <div class="content">
+                    <div class="label">子类:</div>
+                    <nav class="nav_list2">
+                        <!-- <a class="item">网页设计</a> -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="list">
+            <!-- <dl>
+                <dt>
+                    <img src="" alt="">
+                </dt>
+                <dd>文字</dd>
+                <dd>文字</dd>
+            </dl> -->
+
+        </div>
+    </div>
+    <div class="pagenation"></div>
+    <div class="box3">
+        <div class="aboutnet">
+            <h1>花瓣美思，花瓣网旗下网站</h1>
+            <div class="netcont">
+                <section>
+                    <dl>
+                        <dt>花瓣美思</dt>
+                        <dd>关于美思</dd>
+                        <dd>雇主问题</dd>
+                        <dd>设计师问题</dd>
+                        <dd>使用帮助</dd>
+                    </dl>
+                </section>
+                <section>
+                    <dl>
+                        <dt>平台战略合作伙伴</dt>
+                        <dd>中华世纪坛创意新媒体联盟</dd>
+                        <dd>腾讯风铃</dd>
+                        <dd>ixdc</dd>
+                        <dd>红星奖</dd>
+
+                    </dl>
+                </section>
+                <section>
+                    <dl>
+                        <dt>联系与合作</dt>
+                        <dd>联系我们</dd>
+                        <dd>联系客服</dd>
+                        <dd>微博&nbsp;@花瓣网</dd>
+                        <dd class="wx">微信</dd>
+                        <img src="../img/erweia.jpg" alt="">
+                    </dl>
+                </section>
+                <section>
+                    <dl>
+                        <dt>移动客户端</dt>
+                        <dd>iOS</dd>
+                        <dd>Android</dd>
+                    </dl>
+                </section>
+            </div>
+        </div>
+        <div class="banquan">
+            <p>Copyright©&nbsp;Huaban.com&nbsp;2016&nbsp;|&nbsp;浙B2-20110282&nbsp;浙ICP备05049240</p>
+        </div>
+    </div>
+    <script src="../pagination/pagination.js"></script>
+  <script src="../js/list.js"></script>
+
+  <script>
+    //   正则验证..
+    jQuery.validator.addMethod("testUser",(value)=>{
+        // 由数字 字母组成 开头必须是字母 长度为2-8
+        let userReg = /^[a-z][0-9a-z]{1,7}$/i;
+        return userReg.test(value);
+    })
+    jQuery.validator.addMethod("testTel",(value)=>{
+         // 开头必须1 第二位数[3-9] 后面9位数字
+         let telReg = /^1[3-9]\d{9}$/;
+         return telReg.test(value);
+    })
+    jQuery.validator.addMethod("passTest",(value)=>{
+        //  由数字 字母组成  长度6-14
+        let passReg = /^[0-9a-z]{6,14}$/;
+        return passReg.test(value);
+    })
+    // 验证规则与信息
+    $("#formSubRegis").validate({
+        rules:{
+            username:{
+                required:true,
+                testUser:true,
+            },
+            tels:{
+                required:true,
+                testTel:true,
+            },
+            password:{
+                required:true,
+                passTest:true,
+            }
+        },
+        messages:{
+            username:{
+                required:"用户名是必填",
+                testUser:"由数字 字母组成 开头必须是字母 长度为2-8",
+            },
+            tels:{
+                required: "手机号是必填",
+                testTel: "手机号格式不正确",
+            },
+            password:{
+                required:"密码是必填",
+                passTest:"密码格式不对",
+            }
+        },
+        submitHandler:function(value){
+            let user = $("input[name=username]").val();
+            let pass = $("input[name=password]").val();
+            $.ajax({
+                url:"http://localhost:8088/login",
+                data:{ username:user,password:pass },
+                success: function(res){
+                    console.log(res);
+                    if(res.code === false){
+                    alert('登陆失败！')
+                    username.value = ""
+                    tels.value = ""
+                    pws1.value = ""
+                    }else{
+                         alert('登陆成功！')
+                    setCookie(`username=${user};`)
+                    let subres = getCookie("username")
+                    newParentTop.style.display = "flex"
+                    formParentTop.style.display = "none"
+                    comeBtnback.innerHTML = "@" + subres;
+                    comeBtnback.style.borderBottom = "4px solid #aaa"
+                    comeBtnback.style.fontSize = "15px"
+                    }
+                  
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            })
+        }
+    })
+    
+    
+    // 注册
+    registrTop.onclick = function (e) {
+    formParentTop.style.display = "none"
+    // location.reload();  
+}
+//    退出
+registrback.onclick = function () {
+    deleteCookie(`username=${username.value},-1`)
+    newParentTop.style.display = "none"
+    formParentTop.style.display = "none"
+    location.reload();
+}
+    // 发送请求
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,212 @@
+.box .headss section:nth-of-type(3) {
+    display: none;
+}
+
+.box .nav {
+    width: 80%;
+    height: 200px;
+    margin-top: 110px;
+    background-color: #ffffff;
+    display: flex;
+    font-size: 22px;
+    flex-direction: column;
+    /* font-family: "华文行楷"; */
+}
+
+.box .nav .nav1 {
+    width: 100%;
+    height: 48%;
+    /* background-color: cornsilk; */
+    border-bottom: 1px solid #ddd;
+}
+
+.box .nav .nav1 .content,
+.nav_sub .content {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    /* cursor: pointer; */
+}
+
+.box .nav .nav1 .content .label,
+.nav_sub .content .label {
+    width: 60px;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+.box .nav .nav1 .content .nav_list {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav_sub .content .nav_list2 {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.box .nav .nav_sub {
+    width: 100%;
+    height: 48%;
+}
+
+
+.box .list {
+    flex: 1;
+    width: 80%;
+    height: 500px;
+    /* background-color: blueviolet; */
+    font-size: 55px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.box .list dl {
+    width: 300px;
+    height: 400px;
+    /* background-color: darkblue; */
+    margin-top: 3px;
+    text-align: center;
+    transition: all .3s;
+}
+
+.box .list dl:hover {
+    box-shadow: 3px 3px 3px 3px slategray;
+    transform: translateY(-20px);
+}
+
+.box .list dl dt {
+    width: 100%;
+    height: 80%;
+    background-color: darkgoldenrod;
+}
+
+.box .list dl dt img {
+    width: 100%;
+    height: 100%;
+}
+
+.box .list dl dd {
+    width: 100%;
+    height: 27px;
+    text-align: center;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.box .list dl dd:nth-of-type(1) {
+    font-weight: bold;
+    height: 40px;
+    /* background-color: darkkhaki; */
+}
+
+.box .list dl dd:nth-of-type(2) {
+    /* background-color: red; */
+}
+
+a {
+    text-decoration: none;
+    color: skyblue;
+    cursor: pointer;
+}
+
+.item {
+    color: black;
+    font-size: 20px;
+    transition: all .3s;
+}
+
+.item:hover {
+    font-size: 35px;
+    font-weight: bold;
+    color: tomato;
+    border-bottom: 3px solid tomato;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.active {
+    color: orange;
+}
+
+/* 登录 */
+#formParentTop {
+    position: fixed;
+    width: 700px;
+    height: 420px;
+    background: url(../img/dactivebg.gif);
+    top: 30%;
+    left: 35%;
+    border-radius: 5px;
+}
+
+#formSubRegis {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#username-error,#tels-error,#pws1-error{
+    margin-top: 20px;
+    width: 210px;
+    margin-left: 20px;
+   
+}
+/* #formSubRegis #userP label:nth-of-type(1){
+    color: #ffffff;
+    width: 100%;
+    height: 20px;
+   
+    margin-left: 26px;
+    border-bottom: 2px solid #bbb;
+    background-color: chartreuse;
+} */
+#formSubRegis p label.error{
+   color: cyan;
+}
+#username,#tels,#pws1{
+    width: 320px;
+    height: 50px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+#pws1 {
+   
+}
+
+#btnSub {
+    background-color: darkgoldenrod;
+    width: 520px;
+    height: 50px;
+    border-radius: 8px;
+    opacity: 0.8;
+    color: #ffffff;
+    margin-top: 27px;
+    margin-left: -110px;
+}

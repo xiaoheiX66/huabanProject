@@ -225,3 +225,12 @@ input {
     margin-left: 15px;
     color: #ffffff;
 }
+
+/* 分页器 */
+.pagenation{
+    width: 1325px;
+    height: 70px;
+    background-color: #ffffff;
+    border: 1px solid #aaa;
+    margin: 10px auto;
+}
