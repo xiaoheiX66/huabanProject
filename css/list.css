@@ -2,63 +2,6 @@
     display: none;
 }
 
-.box .nav {
-    width: 80%;
-    height: 200px;
-    margin-top: 110px;
-    background-color: #ffffff;
-    display: flex;
-    font-size: 22px;
-    flex-direction: column;
-    /* font-family: "华文行楷"; */
-}
-
-.box .nav .nav1 {
-    width: 100%;
-    height: 48%;
-    /* background-color: cornsilk; */
-    border-bottom: 1px solid #ddd;
-}
-
-.box .nav .nav1 .content,
-.nav_sub .content {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    height: 100%;
-    /* cursor: pointer; */
-}
-
-.box .nav .nav1 .content .label,
-.nav_sub .content .label {
-    width: 60px;
-    height: 100%;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-}
-
-.box .nav .nav1 .content .nav_list {
-    flex: 1;
-    height: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.nav_sub .content .nav_list2 {
-    flex: 1;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.box .nav .nav_sub {
-    width: 100%;
-    height: 48%;
-}
 
 
 .box .list {
@@ -133,7 +76,7 @@ a {
 }
 
 .item:hover {
-    font-size: 35px;
+    font-size: 22px;
     font-weight: bold;
     color: tomato;
     border-bottom: 3px solid tomato;
@@ -150,26 +93,33 @@ img {
 
 .active {
     color: orange;
+    border-bottom: 3px solid chocolate;
 }
 
 /* 登录 */
 #formParentTop {
     position: fixed;
-    width: 700px;
-    height: 420px;
-    background: url(../img/dactivebg.gif);
-    top: 30%;
-    left: 35%;
-    border-radius: 5px;
+    width: 1400px;
+    height: 720px;
+    background: url(../img/bigbg1.jpg) no-repeat 100% 100%;
+    top: 17%;
+    left: 8%;
+    border-radius: 15px;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    
 }
 
 #formSubRegis {
     display: flex;
-    width: 100%;
-    height: 100%;
+    width: 700px;
+    height: 420px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    margin-left: 350px;
 }
 #username-error,#tels-error,#pws1-error{
     margin-top: 20px;
@@ -200,7 +150,7 @@ img {
    
 }
 
-#btnSub {
+#btnSub ,#btnRegss{
     background-color: darkgoldenrod;
     width: 520px;
     height: 50px;
@@ -209,4 +159,12 @@ img {
     color: #ffffff;
     margin-top: 27px;
     margin-left: -110px;
+    font-size: 20px;
+}
+#btnRegss{
+    position: absolute;
+    left: 144px;
+    bottom: 77px;
+    display: none;
+    
 }

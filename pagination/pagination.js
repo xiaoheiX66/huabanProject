@@ -194,7 +194,6 @@ class Pagination {
             border: "1px solid #333",
             margin: "0 20px",
             padding: "0 20px",
-            backgroundColor:"skyblue"
         });
 
         if (i === this.default.pageInfo.pagenum) {

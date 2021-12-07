@@ -26,9 +26,15 @@
                     <p style="font-style: normal;height: 70px;width: 220px;" class="huabanImg">
                         <img src="../img/logos.png" alt="" width="100%" height="100%">
                     </p>
-                    <p>首页</p>
-                    <p style="cursor: pointer;">设计服务&nbsp;<i class="iconfont icon-xiajiantou1"></i></p>
-                    <p>设计师</p>
+                    <p class="itemHead">首页</p>
+                    <p style="cursor: pointer;" class="designServer itemHead active">
+                        <a style="display: inline;text-decoration: none;color: black;" href="./list.html">
+                        设计服务</a>&nbsp;<i class="iconfont icon-xiajiantou1"></i></p>
+                    <p class="exportCont">我是nendie</p>
+                    <p class="designErs itemHead">
+                        <a style="display: inline;text-decoration: none;color: black;" href="./designErs.html">
+                        设计师</a></p>
+                    <!-- border-bottom: 4px solid chocolate; -->
                 </div>
             </section>
             <section>
@@ -60,7 +66,7 @@
                        <!-- 开头必须1 第二位数[3-9] 后面9位数字 -->
                         
                         <p
-                        style="display: flex;flex-direction: row;width: 90%;justify-content: flex-start;align-items: center;"
+                        style="display: flex;flex-direction: row;width: 90%;justify-content: flex-start;align-items: center;margin-top: 10px;"
                         ><i
                         style="color: beige;display: block;width: 80px;height: 50px;line-height: 80px;border-bottom: 2px solid #bbb;"
                         >手机号:</i><input type="text" name="tels" id="tels" placeholder="input tellphone" /></p>
@@ -69,13 +75,15 @@
                    
                        <!-- 由数字 字母组成 长度6-14 -->
                         <p
-                        style="display: flex;flex-direction: row;width: 90%;justify-content: flex-start;align-items: center;"
+                        style="display: flex;flex-direction: row;width: 90%;justify-content: flex-start;align-items: center;margin-top: 10px;"
                         ><i
                         style="color: beige;display: block;width: 80px;height: 50px;line-height: 80px;border-bottom: 2px solid #bbb;"
-                        >密码&nbsp;:</i><input type="password" name="password" id="pws1" placeholder="input password" /></p>
+                        >密码&nbsp;:</i><input type="password" name="password" id="pws1" placeholder="input password" autocomplete /></p>
                        
                     
                     <p><button id="btnSub">登录</button></p>
+                    <p><button id="btnRegss">注册</button></p>
+                    <p style="width: 70%;margin-top: 20px;text-align: right;margin-left: -84px;cursor: pointer;color: #aaa;" class="clickRegs">没有账号?点击注册</p>
                 </form>
             </section>
         </div>
@@ -161,6 +169,33 @@
   <script src="../js/list.js"></script>
 
   <script>
+    
+    //   设计服务
+    $(".headss").click(function(e){
+        if(e.target.classList.contains("itemHead")){
+            document.querySelector(".active").classList.remove("active")
+            e.target.classList.add("active")
+        }
+    })
+    // 设计师
+    $(".designErs").css({"cursor":"pointer"}).click(function(){
+        window.location.href="./designErs.html"
+    })
+      //   点击登录
+    $(".submitTop").click(function(){
+        $("#formParentTop").css({"display":"flex"})
+    })
+    // 点击注册
+    $(".registrTop").click(function(){
+        $("#formParentTop").css({"display":"flex"})
+    })
+    // 点击退出
+    $(".registrback").click(function(){
+    deleteCookie(`username=${username.value},-1`)
+    $(".newParentTop").css({"display":"none"})
+    $("#formParentTop").css({"display":"none"})
+    location.reload();
+})
     //   正则验证..
     jQuery.validator.addMethod("testUser",(value)=>{
         // 由数字 字母组成 开头必须是字母 长度为2-8
@@ -210,7 +245,10 @@
         submitHandler:function(value){
             let user = $("input[name=username]").val();
             let pass = $("input[name=password]").val();
-            $.ajax({
+            
+            // 登录
+                $("#btnSub").one().click(function(){
+                    $.ajax({
                 url:"http://localhost:8088/login",
                 data:{ username:user,password:pass },
                 success: function(res){
@@ -236,23 +274,59 @@
                     console.log(err);
                 }
             })
+                })
+            // 注册
+                $("#btnRegss").one().click(function(){
+                    $.ajax({
+                        url:"http://localhost:8088/reg",
+                        type:"post",
+                        data:{ username:user,password:pass },
+                        success:function(res){
+                            console.log("res==注册：",res);
+                            if(res.code === false){
+                                alert("注册失败")
+                                username.value = ""
+                                tels.value = ""
+                                pws1.value = ""
+                            }else{
+                                alert("注册成功")
+                                username.value = ""
+                                tels.value = ""
+                                pws1.value = ""
+                                $("#formSubRegis").css({"background":"url(../img/dactivebg.gif)"}).children().eq(4).children().css({"display":"none"})
+                                .parent().siblings().eq(4).text("没有账号?点击注册")
+                                // .children().eq(4)
+                            }
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                    })
+                })
         }
     })
-    
+    console.log("表单孩子",$("#formSubRegis").children().eq(4).children().parent().siblings().eq(4));
     
     // 注册
-    registrTop.onclick = function (e) {
-    formParentTop.style.display = "none"
-    // location.reload();  
-}
-//    退出
-registrback.onclick = function () {
-    deleteCookie(`username=${username.value},-1`)
-    newParentTop.style.display = "none"
-    formParentTop.style.display = "none"
-    location.reload();
-}
-    // 发送请求
+//     registrTop.onclick = function (e) {
+//     formParentTop.style.display = "flex"
+//     // location.reload();  
+// }
+
+    $(".clickRegs").hover(
+        function(){
+            $(".clickRegs").css({"text-decoration":"underline","color":"brown"}) 
+        },
+        function(){
+            $(".clickRegs").css({"color":"gray"})
+        }
+    )
+    $(".clickRegs").click(function(){
+        $("#btnRegss").css({"display":"block","z-index":"5"}).parent().siblings().eq(4).text("已有账号?点击登录").click(function(){
+           $("#formParentTop").css({"background":"url(../img/bigbg1.jpg)"}).children().css({"margin-left":"160px"}).children().eq(4).css({"display":"none"})
+        }).parent().parent().css({"background": "url(../img/dactivebg.gif)","left":"19%","width":"1200px"}).children().css({"margin-left":"0px",})
+    })
+
   </script>
 </body>
 

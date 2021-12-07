@@ -17,7 +17,10 @@ var password = document.querySelector("#password"); // 登录后
 
 var newParentTop = document.querySelector(".newParentTop");
 var comeBtnback = document.querySelector(".comeBtnback");
-var registrback = document.querySelector(".registrback"); // 分页器
+var registrback = document.querySelector(".registrback"); //设计服务 
+
+var designServer = document.querySelector(".designServer");
+var exportCont = document.querySelector(".exportCont"); // 分页器
 
 var page = document.querySelector(".pagenation");
 new Pagination(page, {
@@ -57,6 +60,7 @@ function nav() {
       return str += "\n                    <a class=\"item\" style=\"cursor:pointer;\" href=\"#\" index=".concat(index, "  data=").concat(item.category, ">").concat(item.name, "</a>\n                    ");
     });
     nav_list.innerHTML = str;
+    exportCont.innerHTML = str;
     localStorage.setItem("navData", res); // console.log("res1==",res1);
   });
 }
@@ -186,22 +190,17 @@ function getListData(option) {
 }
 
 function allData(res1) {
+  // console.log("首页数据",res1);
   var str = res1.map(function (item) {
     var price;
 
     if (item.price == 0) {
       price = "价格面议";
     } else {
-      price = "\uFFE5".concat(item.price, "/\u5355");
+      price = "\uFFE5".concat(item.price, "/").concat(item.unit);
     }
 
     return "\n                        <dl>\n                        <dt>\n                            <a href=\"./detail.html?id=".concat(item.service_id, "\">\n                        <img src=\"https://muse-img.huabanimg.com/").concat(item.cover[0].key, "_/both/280x280\" alt=\"\"></a>\n                     </dt>\n                        <dd>").concat(item.name, "</dd>\n                     <dd><a style=\"width:30%;height:100%;display:flex;\n                        justify-content:center;align-items:center;border-top:1px solid #ddd;color:black\n                        \">").concat(price, "</a></dd>\n                         </dl>\n                        ");
   }).join("");
   list.innerHTML = str;
 } // 顶部稀烂
-//   点击登录
-
-
-submitTop.onclick = function (e) {
-  formParentTop.style.display = "block";
-};

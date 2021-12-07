@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2970361_1yzf5hdowop.css">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../jquery/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/headsubcss.css">
+    <link rel="stylesheet" href="../css/detailUsers.css">
+    <title>作者</title>
+</head>
+<body>
+    <div class="box">
+        <div class="headss">
+            <section>
+                <div>
+                    <p style="font-style: normal;height: 70px;width: 220px;" class="huabanImg">
+                        <img src="../img/logos.png" alt="" width="100%" height="100%">
+                    </p>
+                    <p>首页</p>
+                    <a style="display: inline;text-decoration: none;color: black;" href="./list.html">
+                    <p style="cursor: pointer;" class="designServer">设计服务&nbsp;<i class="iconfont icon-xiajiantou1"></i>
+                    </p></a>
+                    <p class="exportCont">我是nendie</p>
+                    <a style="display: inline;text-decoration: none;color: black;" href="./designErs.html">
+                    <p class="designErs">设计师</p></a>
+                </div>
+            </section>
+            <section>
+                <div style="position: relative;">
+                    <div class="newParentTop" style="display: flex;">
+                        <button class="comeBtnback">登录</button>
+                        <button class="registrback">退出</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+       <div class="listConts">
+           <section>
+               <div class="contsUserIntrodue">
+                  <!-- introduceContent.. -->
+               </div>
+           </section>
+           <section>
+               <div id="clickChangeStyle">
+                   <p id="desinServerBoss" class="item showActive">设计服务</p>
+                   <p id="OriginatorData" class="item">原创</p>
+                   <p id="personnalData" class="item">个人资料</p>
+               </div>
+               <div>
+                   <p>他/她的花瓣主页&nbsp;&gt;&gt;</p>
+               </div>
+           </section>
+           <section class="designServerList">
+           <!-- 下方list -->
+           
+           </section>
+       </div>
+        <div class="box3">
+            <div class="aboutnet">
+                <h1>花瓣美思，花瓣网旗下网站</h1>
+                <div class="netcont">
+                    <section>
+                        <dl>
+                            <dt>花瓣美思</dt>
+                            <dd>关于美思</dd>
+                            <dd>雇主问题</dd>
+                            <dd>设计师问题</dd>
+                            <dd>使用帮助</dd>
+                        </dl>
+                    </section>
+                    <section>
+                        <dl>
+                            <dt>平台战略合作伙伴</dt>
+                            <dd>中华世纪坛创意新媒体联盟</dd>
+                            <dd>腾讯风铃</dd>
+                            <dd>ixdc</dd>
+                            <dd>红星奖</dd>
+
+                        </dl>
+                    </section>
+                    <section>
+                        <dl>
+                            <dt>联系与合作</dt>
+                            <dd>联系我们</dd>
+                            <dd>联系客服</dd>
+                            <dd>微博&nbsp;@花瓣网</dd>
+                            <dd class="wx">微信</dd>
+                            <img src="../img/erweia.jpg" alt="">
+                        </dl>
+                    </section>
+                    <section>
+                        <dl>
+                            <dt>移动客户端</dt>
+                            <dd>iOS</dd>
+                            <dd>Android</dd>
+                        </dl>
+                    </section>
+                </div>
+            </div>
+            <div class="banquan">
+                <p>Copyright©&nbsp;Huaban.com&nbsp;2016&nbsp;|&nbsp;浙B2-20110282&nbsp;浙ICP备05049240</p>
+            </div>
+        </div>
+  </div>
+
+  <script>
+      $(".designServer").click(function(){
+          window.location.href="./list.html"
+      })
+      $(".designErs").click(function(){
+          window.location.href="./designErs.html"
+      })
+
+      window.onload = function(e){
+        let res = location.search.match(/\?id=(\w+)/)
+        console.log("res",res[1]);
+        
+        // if(!res){
+        //     window.location.href("./list.html") 
+        // }
+        let id = res[1]
+        $.ajax({
+            url:`https://muse.huaban.com/api/v1/users/${id}`,
+            success:function(res){
+                // console.log("res改变类型之前",res);
+                let res1 = Array(res);
+                // console.log("res1",res1);
+                let str = "";
+                res1.map((item,index)=>{
+                   
+                     return str +=`
+                    <div class="intoduceLeft">
+                        <dl>
+                            <dd>
+                                <img src="//hbimg.huabanimg.com/${item.avatar.key}_/both/120x120" alt="" width="80%" height="70%">
+                            </dd>
+                            <dd>
+                                <p>${item.username}</p>
+                                <p>${item.category[index]}&nbsp;&nbsp;&nbsp;&nbsp;${item.city}</p>
+                                <p>${item.desc}</p>
+                            </dd>
+                            <dd>
+                                <p>聊天</p>
+                            </dd>
+                        </dl>
+                   </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                   <div class="intoduceRight">
+                    <p><i>☆☆平均响应时间</i><i>18天15时20分53秒&nbsp;&nbsp;</i></p>
+                    <p><i>☆☆实名认证</i><i>已认证&nbsp;&nbsp;</i></p>
+                    <p><i>☆☆评价</i><i>☆☆☆☆☆&nbsp;&nbsp;</i></p>
+                   </div>
+                    `
+                }).join("")
+                $(".contsUserIntrodue").html(str);
+            },
+            error:function(err){
+                console.log(err);
+            }
+        })
+        // 设计服务
+        $("#desinServerBoss").click(function(){
+            renderServer()
+        })
+        // 原创数据
+        $("#OriginatorData").click(function(){
+            renderPersonData()
+        })
+        // 个人资料
+        $("#personnalData").click(function(){
+            originalDatas()
+        })
+        // 样式点击改变
+        $("#clickChangeStyle").click(function(e){
+           if(e.target.classList.contains("item")){
+            document.querySelector(".showActive").classList.remove("showActive")
+             e.target.classList.add("showActive")
+           }
+        })
+        // 设计服务
+        renderServer()
+        function renderServer(){
+           $.ajax({
+               url:`https://muse.huaban.com/api/v1/users/${id}/services/?limit=100`,
+               success:function(res){
+                //    console.log("设计服务数据",res);
+                   let str = "";
+                   res.forEach((item,index)=>{
+                    //    console.log("内容",index);
+                    //    console.log("item0",item.name);
+                       let price;
+                       if(item.price == 0){
+                            price = "价格面议"
+                       }else{
+                           price =`￥${item.price}/${item.unit}`
+                       }
+                       return str +=`
+                       <dl>
+                <dt>
+                    <a href="./detail.html?id=${item.service_id}">
+                        <img src="//muse-img.huabanimg.com/${item.cover[0].key}_/both/280x280" alt=""></a> 
+             </dt>
+                <dd><p>${item.name}</p></dd>
+             <dd><a style="height:50%;display:flex;
+                justify-content:center;align-items:center;color:black;border-top: 1px solid #dddddd;
+                font-size: 24px;
+                ">${price}</a></dd>
+                 </dl>
+                       `
+                   })
+                   $(".designServerList").html(str);
+               },
+               error:function(err){
+                    console.log(err);
+               }
+           })
+        }
+        
+        // 原创数据
+        function renderPersonData(){
+            $.ajax({
+                url:`https://muse.huaban.com/api/v1/users/${id}/boards/`,
+                success:function(res){
+                    console.log("原创数据",res);
+                    let str = "";
+                   res.forEach((item,index)=>{
+                    //    console.log("内容",index);
+                    //    console.log("item0",item);
+                       return str +=`
+                       <dl>
+                <dt>
+                    <a href="./originalDesigner.html?id=${item.board_id}">
+                        <img src="//hbimg.huabanimg.com/${item.cover.key}_/both/280x280" alt=""></a> 
+             </dt>
+                <dd><p>${item.title}</p></dd>
+             <dd><a style="height:50%;display:flex;
+                justify-content:center;align-items:center;color:#bbb;border-top: 1px solid #dddddd;
+                font-size: 24px;font-size:15px
+                ">${item.pin_count}张图片</a></dd>
+                 </dl>
+                       `
+                   })
+                   $(".designServerList").html(str);
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            })
+        }
+
+        // 个人资料
+        function originalDatas(){
+            $.ajax({
+                url:`https://muse.huaban.com/api/v1/users/${id}`,
+                success:function(res){
+                    // console.log("个人资料",res);
+                    let res1 =Array(res);
+                    // console.log("个人资料res",res1);
+                    let str = "";
+                    res1.map((item,index)=>{
+                        // console.log("个人资料item",item);
+                        return str +=`
+                        <div class="originnalDatass">
+                <div class="originnalInbox">
+                    <p><span class="leftInbox">所在地</span><span class="rightInbox">${item.city}</span></p>
+                    <p><span class="leftInbox">擅长领域</span><span class="rightInbox">${item.category[index]}</span></p>
+                    <p><span class="leftInbox">实名认证</span><span class="rightInbox">实名认证</span></p>
+                    <p><span class="leftInbox">评价</span><span class="rightInbox">${item.status}</span></p>
+                    <p><span class="leftInbox">响应时间</span><span class="rightInbox">18天15时20分53秒</span></p>
+                    <p><span class="leftInbox">个人简介</span><span  class="rightInbox">
+                       ${item.desc}
+                    </span><span style="width:10px;height:100%"></span></p>
+                </div>
+            </div>
+                        `
+                    }).join("")
+                    $(".designServerList").html(str);
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            })
+        }
+    
+    }
+
+       
+  </script>
+</body>
+</html>

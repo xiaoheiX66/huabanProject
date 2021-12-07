@@ -41,11 +41,11 @@ app.post("/reg", jsonParser, (req, res) => {
                         })
                         console.log('req.body', req.body);
                     }
-                    // res.send({
-                    //     code: true,
-                    //     msg: "注册成功",
-                    //     status: 200
-                    // })
+                    res.send({
+                        code: true,
+                        msg: "注册成功",
+                        status: 200
+                    })
                     console.log('req.body', req.body);
 
                 })

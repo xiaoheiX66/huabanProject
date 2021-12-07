@@ -218,8 +218,7 @@ function () {
       setCss(p, {
         border: "1px solid #333",
         margin: "0 20px",
-        padding: "0 20px",
-        backgroundColor: "skyblue"
+        padding: "0 20px"
       });
 
       if (i === this["default"].pageInfo.pagenum) {

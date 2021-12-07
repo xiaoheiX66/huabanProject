@@ -20,7 +20,6 @@ var flag = false;
 window.onload = function () {
   var res = location.search.match(/\?id=(\w+)/);
   console.log('res=', res);
-  console.log('res=', res[1]);
 
   if (!res) {
     window.location.href("./list.html");
@@ -30,6 +29,7 @@ window.onload = function () {
   pAjax({
     url: "https://muse.huaban.com/api/v2/services/".concat(id)
   }).then(function (res) {
+    console.log("res", res);
     var res1 = JSON.parse(res);
     console.log(res1);
     var str = "";

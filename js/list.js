@@ -17,6 +17,10 @@ let password = document.querySelector("#password")
 let newParentTop = document.querySelector(".newParentTop")
 let comeBtnback = document.querySelector(".comeBtnback")
 let registrback = document.querySelector(".registrback")
+
+//设计服务 
+let designServer = document.querySelector(".designServer")
+let exportCont = document.querySelector(".exportCont")
 // 分页器
 let page = document.querySelector(".pagenation")
 new Pagination(page, {
@@ -62,6 +66,7 @@ function nav() {
                     `
         })
         nav_list.innerHTML = str;
+        exportCont.innerHTML = str;
         localStorage.setItem("navData", res);
         // console.log("res1==",res1);
     })
@@ -205,12 +210,13 @@ async function getListData(option) {
 }
 
 function allData(res1) {
+    // console.log("首页数据",res1);
     let str = res1.map((item) => {
         let price;
         if (item.price == 0) {
             price = "价格面议"
         } else {
-            price = `￥${item.price}/单`
+            price = `￥${item.price}/${item.unit}`
         }
         return `
                         <dl>
@@ -228,8 +234,4 @@ function allData(res1) {
     list.innerHTML = str;
 }
 // 顶部稀烂
-//   点击登录
-submitTop.onclick = function (e) {
-    formParentTop.style.display = "block"
-}
 

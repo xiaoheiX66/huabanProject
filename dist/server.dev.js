@@ -53,13 +53,13 @@ app.post("/reg", jsonParser, function (req, res) {
         status: 400
       });
       console.log('req.body', req.body);
-    } // res.send({
-    //     code: true,
-    //     msg: "注册成功",
-    //     status: 200
-    // })
+    }
 
-
+    res.send({
+      code: true,
+      msg: "注册成功",
+      status: 200
+    });
     console.log('req.body', req.body);
   });
 }); // app.get("/list",(req,res)=>{
