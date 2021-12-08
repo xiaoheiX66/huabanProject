@@ -71,13 +71,12 @@ a {
 
 .item {
     color: black;
-    font-size: 20px;
+    font-size: 18px;
     transition: all .3s;
 }
 
 .item:hover {
-    font-size: 22px;
-    font-weight: bold;
+
     color: tomato;
     border-bottom: 3px solid tomato;
 }
@@ -92,8 +91,7 @@ img {
 }
 
 .active {
-    color: orange;
-    border-bottom: 3px solid chocolate;
+    border-bottom: 2px solid chocolate;
 }
 
 /* 登录 */

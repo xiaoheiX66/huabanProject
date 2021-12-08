@@ -41,20 +41,24 @@ body {
     justify-content: flex-start;
     align-items: center;
 }
-
+.box .headss section:nth-of-type(1) div ,
+.box .headss section:nth-of-type(1) div .designServer,
+.box .headss section:nth-of-type(1) div .designErs{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
 .box .headss section:nth-of-type(1) div {
     width: 570px;
-    height: 100%;
-    display: flex;
     justify-content: space-evenly;
-    align-items: center;
-    font-size: 25px;
+    font-size: 22px;
 }
 
 .box .headss section:nth-of-type(1) div .designServer{
     position: relative;
 }
-
+.box .headss section:nth-of-type(1) div .designErs{
+}
 .box .headss section:nth-of-type(1) div .exportCont{
     width: 420px;
     height: 330px;
@@ -111,10 +115,10 @@ body {
 .box .nav {
     width: 80%;
     height: 200px;
-    margin-top: 110px;
+    margin-top: 129px;
     background-color: #ffffff;
     display: flex;
-    font-size: 22px;
+    font-size: 18px;
     flex-direction: column;
     /* font-family: "华文行楷"; */
 }

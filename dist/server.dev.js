@@ -6,6 +6,9 @@ var mysql = require('mysql');
 
 var bodyParser = require('body-parser');
 
+var _require = require('http-proxy-middleware'),
+    createProxyMiddleware = _require.createProxyMiddleware;
+
 var app = express();
 var connects = mysql.createConnection({
   host: "localhost",
@@ -16,6 +19,13 @@ var connects = mysql.createConnection({
 connects.connect();
 app.use(express["static"]('./')); // submit
 
+app.use('/api', createProxyMiddleware({
+  target: "https://huaban.com/",
+  changeOrigin: true,
+  pathRewrite: {
+    "^/api": "/"
+  }
+}));
 app.get("/login", function (req, res) {
   var _req$query = req.query,
       username = _req$query.username,

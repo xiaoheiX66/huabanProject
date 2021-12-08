@@ -1,6 +1,7 @@
 let express = require('express')
 let mysql = require('mysql')
 let bodyParser = require('body-parser')
+let {createProxyMiddleware} = require('http-proxy-middleware')
 
 let app = express();
 let connects = mysql.createConnection({
@@ -13,6 +14,17 @@ connects.connect();
 
 app.use(express.static('./'));
 // submit
+app.use(
+    '/api',
+    createProxyMiddleware({
+        target:"https://huaban.com/",
+        changeOrigin:true,
+        pathRewrite:{
+            "^/api":"/",
+        },
+    })
+)
+
 app.get("/login",(req,res)=>{
     let { username,password } = req.query
     connects.query(`SELECT * FROM user WHERE username='${username}' AND password='${password}'`,(err,data)=>{

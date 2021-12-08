@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2970361_1yzf5hdowop.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2998256_kmrez03r6zs.css">
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script src="../jquery/jquery.min.js"></script>
     <link rel="stylesheet" href="../css/headsubcss.css">
@@ -122,6 +123,7 @@
         //     window.location.href("./list.html") 
         // }
         let id = res[1]
+        localStorage.setItem("designId",id)
         $.ajax({
             url:`https://muse.huaban.com/api/v1/users/${id}`,
             success:function(res){
@@ -143,14 +145,20 @@
                                 <p>${item.desc}</p>
                             </dd>
                             <dd>
-                                <p>聊天</p>
+                                <p><i class="iconfont icon-xiazai16" style="font-size:23px;font-weight:bold"></i></p>
                             </dd>
                         </dl>
                    </div>&nbsp;&nbsp;&nbsp;&nbsp;
                    <div class="intoduceRight">
-                    <p><i>☆☆平均响应时间</i><i>18天15时20分53秒&nbsp;&nbsp;</i></p>
-                    <p><i>☆☆实名认证</i><i>已认证&nbsp;&nbsp;</i></p>
-                    <p><i>☆☆评价</i><i>☆☆☆☆☆&nbsp;&nbsp;</i></p>
+                    <p><i>&nbsp;<i class="iconfont icon-naozhong"></i>&nbsp;平均响应时间</i><i>18天15时20分53秒&nbsp;&nbsp;</i></p>
+                    <p><i>&nbsp;<i class="iconfont icon-shimingrenzheng" style="font-size:20px"></i>&nbsp;实名认证</i><i>已认证&nbsp;&nbsp;</i></p>
+                    <p><i>&nbsp;<i class="iconfont icon-pingjia"></i>&nbsp;评价</i>
+                        <i style="color:orange">&nbsp;
+                        <i class="iconfont icon-wujiaoxing-"></i>&nbsp;<i class="iconfont icon-wujiaoxing-">
+                            </i>&nbsp;<i class="iconfont icon-wujiaoxing-"></i>&nbsp;<i class="iconfont icon-wujiaoxing-">
+                                </i>&nbsp;<i class="iconfont icon-wujiaoxing-">
+                                    </i>
+                        &nbsp;&nbsp;</i></p>
                    </div>
                     `
                 }).join("")

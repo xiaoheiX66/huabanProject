@@ -66,7 +66,7 @@ function nav() {
                     `
         })
         nav_list.innerHTML = str;
-        exportCont.innerHTML = str;
+        // exportCont.innerHTML = str;
         localStorage.setItem("navData", res);
         // console.log("res1==",res1);
     })

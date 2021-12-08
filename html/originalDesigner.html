@@ -1,12 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
+<>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="../css/originnalDesign.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2998256_kmrez03r6zs.css">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../jquery/jquery.min.js"></script>
+    <script src="../validation/dist/jquery.validate.min.js"></script>
+    <script src="../js/cookie.js"></script>
     <title>原创数据</title>
 </head>
+
 <body>
-    <div>我是原创数据详情页</div>
+    <div id="pageBox">
+        <header>
+            <section>
+                <p>花瓣</p>
+                <p>发现</p>
+                <p>设计大赛</p>
+                <p>&nbsp;4项征集中</p>
+            </section>
+            <section>
+                <input type="text" placeholder="搜索你喜欢的">
+                <p style="border-radius: 0px 9px 9px 0px;"><i class="iconfont icon-kehufuwukefu" style="font-size: 23px;"></i></p>
+            </section>
+            <section>
+                <p><span>作品集</span></p>
+                <p><button>登录/注册</button></p>
+            </section>
+        </header>
+        <nav>
+            <img src="https://hbimg-other.huabanimg.com/d1b9c1a3aa4534e097896ed9f2e6405aeba2a7671634637683HqoJrWhp"
+                alt="" width="100%" height="100%">
+        </nav>
+        <footer class="footerContents">
+            <div class="bottomFooters">
+                <!-- <div>
+                    <div class="leftdivss">
+                        <p style="color: #444444;font-size: 23px;font-weight: bold;">&nbsp;&nbsp;&nbsp;日漫条漫窝嫩叠</p>
+                        <p style="margin-left: 14px;"><span
+                                style="border-left: 1px solid #bbb;font-size: 18px;color: #999999;">&nbsp;&nbsp;&nbsp;所属分类：<i
+                                    style="color: #9e7e6b;font-style: normal;">插画/漫画</i></span></p>
+                    </div>
+                    <div class="rightdiv">
+                        <dl>
+                            <dd>关注此画板</dd>
+                            <dd>喜欢</dd>
+                            <dd>
+                                <p style="width: 50px;height: 100%;">分享&nbsp;</p>
+                                <p style="flex: 1;width: 100%;height: 100%;
+                            background-color: #fafafa;border-right: 1px solid #ededed;
+                            ">☆☆☆☆</p>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div>
+                    <div class="topdiv">
+                        <p>
+                            <img src="../img/smallogo.jpg" alt="" width="25%" height="100%">&nbsp;
+                            <span style="display: block;font-size: 23px;color: black;font-weight: bold;">静静emo</span>
+                        </p>
+                    </div>
+                    <div class="bottomdiv">
+                        <p>6采集</p>
+                        <p>被84人关注</p>
+                    </div>
+                </div> -->
+            </div>
+            <div class="ulsMixes">
+                <ul class="parentBox">
+                   <!-- immgmix -->
+                </ul>
+                <ul class="parentBox">
+                    <!-- immgmix -->
+                 </ul>
+                 <ul class="parentBox">
+                    <!-- immgmix -->
+                 </ul>
+                 <ul class="parentBox">
+                    <!-- immgmix -->
+                 </ul>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        window.onload = function () {
+            let resId = location.search.match(/\?id=(\w+)/)
+            let res = localStorage.getItem("designId")
+            console.log("idres",res);
+            if (!res || !resId) {
+                window.location.href("./list.html")
+            }
+            let idUser = resId[1];
+            let uls = $(".parentBox")
+        //    通过id找对应数据进行渲染
+           getUserDetail()
+           function getUserDetail(){
+               $.ajax({
+                   url:`/api/boards/${idUser}`,
+                   success:function(res){
+                       let res1 = Array(res)
+                       console.log("res1",res1);
+                       getTopDataCont(res1)
+                   },
+                   error:function(err){
+                       console.log(err);
+                   }
+               })
+           }
+
+            function getTopDataCont(data){
+                let str = "";
+                data.forEach((item,index)=>{
+                    // console.log("itemsss",item);
+                    return str +=`
+                    <div>
+                    <div class="leftdivss">
+                        <p style="color: #444444;font-size: 23px;font-weight: bold;">&nbsp;&nbsp;&nbsp;${item.board.title}</p>
+                        <p style="margin-left: 14px;"><span
+                                style="border-left: 1px solid #bbb;font-size: 18px;color: #999999;">&nbsp;&nbsp;&nbsp;所属分类：<i
+                                    style="color: #9e7e6b;font-style: normal;">${item.board.category_name}</i></span></p>
+                    </div>
+                    <div class="rightdiv">
+                        <dl>
+                            <dd style="cursor:pointer">关注此画板</dd>
+                            <dd><i class="iconfont icon-aixin" style="color:black;font-size:18px"></i>${item.board.like_count}喜欢</dd>
+                            <dd>
+                                <p style="width: 50px;height: 100%;">分享&nbsp;</p>
+                                <p style="flex: 1;width: 100%;height: 100%;
+                            background-color: #fafafa;border-right: 1px solid #ededed;
+                            ">
+                            <i class="iconfont icon-xinlangweibo"  style="width:30px;height:70%;color:black;line-height:30px;font-size:18px;border-right:1px solid #eee;text-align:center"></i>
+                            <i class="iconfont icon-kongjian" style="width:30px;height:70%;color:black;line-height:30px;font-size:18px;border-right:1px solid #eee;text-align:center"></i>
+                            <i class="iconfont icon-weixin" style="width:30px;height:70%;color:black;line-height:30px;font-size:18px;border-right:1px solid #eee;text-align:center"></i>
+                            <i class="iconfont icon-yuyinjiantou" style="width:40px;height:70%;color:black;line-height:30px;font-size:22px;text-align:center"></i>
+                            </p>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div>
+                    <div class="topdiv">
+                        <p>
+                            <img src="//hbimg.huabanimg.com/${item.board.user.avatar.key}_sq75/format/webp" alt="" width="25%" height="100%">&nbsp;
+                            <span style="display: block;font-size: 23px;color: black;font-weight: bold;">${item.board.user.username}</span>
+                        </p>
+                    </div>
+                    <div class="bottomdiv">
+                        <p>${item.board.pin_count}采集</p>
+                        <p>被${item.board.follow_count}人关注</p>
+                    </div>
+                </div>
+                    `
+                })
+                $(".bottomFooters").html(str);
+            }
+            renderDatas()
+            function renderDatas(){
+                $.ajax({
+                    url:"../imgmix.json",
+                    success:function(res){
+                         let str = "";
+                        console.log("内部图片",res);
+                        res.forEach((item)=>{
+                      str +=`
+                    <li>
+                        <div class="imgBox">
+                            <img src="${item.imgUrl}" alt="" width="100%" >
+                        </div>
+                        <div class="contentBox">
+                            <p><i class="iconfont icon-xiangkuang"></i>&nbsp;${item.imgContext}</p>
+                        </div>
+                    </li>
+                    `
+                })
+                 $(".parentBox").html(str)
+                    },
+                    error:function(err){
+                        console.log(err);
+                    }
+                })
+               
+            }
+
+        }
+    </script>
 </body>
+
 </html>

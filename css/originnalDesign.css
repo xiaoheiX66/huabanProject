@@ -1,0 +1,315 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    height: 100%;
+}
+body{
+    background-color: #fafafa;
+}
+ul,li{
+    list-style: none;
+}
+
+#pageBox{
+    width: 100%;
+    height: 100%;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+    margin: 0px auto;
+}
+#pageBox header{
+    width: 100%;
+    height: 82px;
+    z-index: 8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    background-color: #ffffff;
+}
+#pageBox header section:nth-child(1),
+#pageBox header section:nth-child(2),
+#pageBox header section:nth-child(3){
+     height: 50px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+#pageBox header section:nth-child(1){
+    width: 380px;
+    justify-content: space-evenly;
+}
+#pageBox header section:nth-child(1) p{
+    padding: 0px 5px;
+    color: #777788;
+}
+#pageBox header section:nth-child(1) p:nth-child(1){
+    font-size: 28px;
+    width: 94px;
+    text-align: right;
+    color: black;
+    background-image: url(../img/smallogo.jpg);
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+#pageBox header section:nth-child(1) p:nth-child(4){
+    width: 100px;
+    height: 33px;
+    line-height: 33px;
+    border-radius: 8px;
+    text-align: left;
+    color: #ffffff;
+    background: #ff9690;
+    font-family: "方正舒体";
+    font-size: 18px;
+}
+
+#pageBox header section:nth-child(2){
+    flex: 1;
+}
+#pageBox header section:nth-child(2) p{
+    width: 76px;
+    height: 70%;
+    padding: 0px 5px 5px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+    font-size: 17px;
+    color: #999999;
+}
+#pageBox header section:nth-child(2) input{
+    flex: 1;
+    width: 100%;
+    height: 81%;
+    border:none;
+    background-color: #f2f2f2;
+    font-size: 18px;
+    border-radius: 9px 0px 0px 9px;
+    text-align: center;
+}
+
+#pageBox header section:nth-child(3){
+    width: 300px;
+    justify-content: space-evenly;
+}
+#pageBox header section:nth-child(3) p:nth-child(1){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#pageBox header section:nth-child(3) p:nth-child(1) span{
+    width: 78px;
+    height: 34px;
+    line-height: 34px;
+    background-color: #ff8d74;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+}
+#pageBox header section:nth-child(3) p:nth-child(2){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#pageBox header section:nth-child(3) p:nth-child(2) button{
+    width: 125px;
+    height: 40px;
+    background-color: #ec414d;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+}
+
+
+#pageBox nav{
+    width: 100%;
+    height: 90px;
+    margin-top: 80px;
+    /* background-image: url(https://hbimg-other.huabanimg.com/d1b9c1a3aa4534e097896ed9f2e6405aeba2a7671634637683HqoJrWhp); */
+}
+
+
+#pageBox footer{
+    flex: 1;
+    width: 97%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#pageBox footer .bottomFooters{
+    width: 95%;
+    height: 200px;
+   margin-top: 100px;
+   display: flex;
+   flex-direction: column;
+}
+#pageBox footer .bottomFooters div:nth-of-type(1){
+    width: 100%;
+    height: 100px;
+    display: flex;
+     justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border-top: 1px solid #ededed;
+    border-bottom: 1px solid #ededed;
+}
+#pageBox footer .bottomFooters div:nth-of-type(1) .leftdivss{
+    width: 600px;
+    height: 100%;
+    margin-top:10px;
+    padding: 5px 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#pageBox footer .bottomFooters div:nth-of-type(1) .leftdivss p{
+    height: 42px;
+    line-height: 22px;
+}
+
+#pageBox footer .bottomFooters div:nth-of-type(1) .rightdiv{
+    width: 490px;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+#pageBox footer .bottomFooters div:nth-of-type(1) .rightdiv dl{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#pageBox footer .bottomFooters div:nth-of-type(1) .rightdiv dl dd{
+    height: 40px;
+    border-radius:3px;
+    font-size: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#pageBox footer .bottomFooters div:nth-of-type(1) .rightdiv dl dd:nth-of-type(1){
+    width: 125px;
+    color: #ffffff;
+    background-color: #ec414d;
+}
+#pageBox footer .bottomFooters div:nth-of-type(1) .rightdiv dl dd:nth-of-type(2){
+    width: 100px;
+    color: #999999;
+    background-color: #ededed;
+}
+#pageBox footer .bottomFooters div:nth-of-type(1) .rightdiv dl dd:nth-of-type(3){
+    width: 200px;
+    color: #474747;
+    display: flex;
+}
+#pageBox footer .bottomFooters div:nth-of-type(1) .rightdiv dl dd:nth-of-type(3) p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pageBox footer .bottomFooters div:nth-of-type(2) {
+    width: 95%;
+    height: 85px;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ededed;
+}
+
+#pageBox footer .bottomFooters div:nth-of-type(2) .topdiv{
+   width: 275px;
+   height: 42px;
+   margin-top:0px;
+   display: flex;
+   align-items: center;
+   border: none;
+   background-color: #fafafa;
+}
+#pageBox footer .bottomFooters div:nth-of-type(2) .topdiv p{
+    width: 200px;
+    height: 42px;
+    margin-left: 25px;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+}
+#pageBox footer .bottomFooters div:nth-of-type(2) .topdiv p img{
+    border-radius: 50%;
+}
+
+#pageBox footer .bottomFooters div:nth-of-type(2) .bottomdiv{
+   width: 275px;
+   height: 100%;
+   display: flex;
+   text-align: right;
+   font-size: 19px;
+}
+#pageBox footer .bottomFooters div:nth-of-type(2) .bottomdiv p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#pageBox footer .bottomFooters div:nth-of-type(2) .bottomdiv p:nth-child(1){
+    width: 95px;
+    height: 100%;
+    font-weight: bold;
+    color: black;
+    background-color: #ffffff;
+}
+#pageBox footer .bottomFooters div:nth-of-type(2) .bottomdiv p:nth-child(2){
+    flex: 1;
+    height: 100%;
+    color: #7f7d77;
+}
+
+
+/* uls */
+#pageBox footer .ulsMixes{
+    flex: 1;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  justify-content: space-around;
+}
+#pageBox footer .ulsMixes ul{
+    float: left;
+    width: calc(25% - 20px);
+    margin: 10px;
+}
+#pageBox footer .ulsMixes ul li{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #333;
+    margin-top: 10px;
+}
+#pageBox footer .ulsMixes ul li .imgBox{
+    width: 100%;
+    height: 100%;
+}
+#pageBox footer .ulsMixes ul li .contentBox{
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+i{
+    cursor: pointer;
+}
+
+

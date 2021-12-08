@@ -59,8 +59,8 @@ function nav() {
     res1.forEach(function (item, index) {
       return str += "\n                    <a class=\"item\" style=\"cursor:pointer;\" href=\"#\" index=".concat(index, "  data=").concat(item.category, ">").concat(item.name, "</a>\n                    ");
     });
-    nav_list.innerHTML = str;
-    exportCont.innerHTML = str;
+    nav_list.innerHTML = str; // exportCont.innerHTML = str;
+
     localStorage.setItem("navData", res); // console.log("res1==",res1);
   });
 }
