@@ -11,13 +11,14 @@
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2970361_1yzf5hdowop.css">
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script src="../jquery/jquery.min.js"></script>
-    <link rel="stylesheet" href="../css/headsubcss.css">
+    <script src="../js/cookie.js"></script>
     <link rel="stylesheet" href="../css/designers.css">
+    <link rel="stylesheet" href="../css/headsubcss.css">
     <title>花瓣</title>
 </head>
 
 <body>
-    <div class="box">
+          <div class="box">
         <div class="headss">
             <section>
                 <div>
@@ -39,7 +40,7 @@
                 <div style="position: relative;">
                     <div class="newParentTop" style="display: flex;">
                         <button class="comeBtnback">登录</button>
-                        <button class="registrback">退出</button>
+                        <button class="registrback"><a style="color: #ffffff;text-decoration: none;" href="./list.html">退出</a></button>
                     </div>
                 </div>
             </section>
@@ -57,9 +58,9 @@
             <div class="inviteSort">推荐排序&nbsp;<i class="iconfont icon-yuyinjiantou" style="font-size: 22px;"></i></div>
             <div class="listUser">
                 <!-- list孩子们 -->
+                wonndie
             </div>
-          
-        <div class="box3">
+               <div class="box3">
             <div class="aboutnet">
                 <h1>花瓣美思，花瓣网旗下网站</h1>
                 <div class="netcont">
@@ -105,11 +106,40 @@
                 <p>Copyright©&nbsp;Huaban.com&nbsp;2016&nbsp;|&nbsp;浙B2-20110282&nbsp;浙ICP备05049240</p>
             </div>
         </div>
-  </div>
+        </div>
+           
+       
+        </div>
+  
     <script src="../js/tempMiddle.js"></script>
         <script>
             let nav_list = document.querySelector(".nav_list")
 
+               // 点击退出，回到设计服务页
+               $(".registrback").click(function(){
+                deleteCookie(`username=${username.value},-1`)
+                window.location.href = "./list.html"
+            })
+            
+             let flag =true;
+            // 查找cookie，若有则渲染，没有则拦截或使用默认值
+            let subRes = getCookie("username");
+            if(!subRes){
+                console.log("您还未进行登录");
+                // 方便后期行动，若想进一步优化，可试着当没有登录信息的时候回退到设计服务页登录，在当页进行拦截并强制跳转
+                        $(".comeBtnback").click(function(){
+                    if(flag == true){
+                       confirm("请移架设计服务页进行登录...")
+                        window.location.href = "./list.html"
+                    }else{
+                        flag = false;
+                        console.log("您点了取消操作");
+                    }
+                })
+            }else{
+                $(".comeBtnback").text("@"+subRes).css({"border-bottom":"4px solid #aaa","font-size":"15px"})
+            }
+           
             $(".designServer").click(function () {
                 window.location.href = "./list.html"
             })

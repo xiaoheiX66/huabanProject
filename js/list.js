@@ -96,7 +96,7 @@ nav_list.onclick = function (e) {
                         price = `￥${item.price}/单`
                     }
                     return str += `
-                        <dl>
+                        <dl style="width:383px;height:600px">
                         <dt>
                             <a href="./detail.html?${item.service_id}">
                         <img src="https://muse-img.huabanimg.com/${item.cover[0].key}_/both/280x280" alt=""></a>
@@ -128,7 +128,7 @@ nav_list.onclick = function (e) {
                     price = `￥${item.price}/单`
                 }
                 return str += `
-                        <dl>
+                        <dl style="width:383px;height:600px">
                         <dt>
                             <a href="./detail.html?id=${item.service_id}">
                         <img src="https://muse-img.huabanimg.com/${item.cover[0].key}_/both/280x280" alt="">
@@ -190,7 +190,7 @@ nav_list2.onclick = function (e) {
                     price = `￥${item.price}/单`
                 }
                 return str += `
-                        <dl>
+                        <dl style="width:383px;height:600px">
                         <dt>
                             <a href="./detail.html?id=${item.service_id}">
                         <img src="https://muse-img.huabanimg.com/${item.cover[0].key}_/both/280x280" alt="">
@@ -231,7 +231,7 @@ function allData(res1) {
             price = `￥${item.price}/${item.unit}`
         }
         return `
-                        <dl>
+                        <dl style="width:383px;height:600px">
                         <dt>
                             <a href="./detail.html?id=${item.service_id}">
                         <img src="https://muse-img.huabanimg.com/${item.cover[0].key}_/both/280x280" alt=""></a>

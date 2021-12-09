@@ -80,16 +80,6 @@ var info = {
   other: "其他"
 };
 
-function setTimess(time) {
-  var date = new Date();
-  date.date = Math.floor(time / (1000 * 60 * 60 * 24));
-  date.hours = Math.floor(time / (1000 * 60 * 60) % 24);
-  date.minutes = Math.floor(time / (1000 * 60) % 60);
-  date.seconds = Math.floor(time / 1000 % 60);
-  date.milliseconds = Math.floor(time % 1000);
-  return date;
-}
-
 function transTime(timestamp) {
   var result = "";
 

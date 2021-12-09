@@ -171,9 +171,9 @@ body {
 
 /* 版权位置 */
 .box3 {
+    margin-top: 20px;
     width: 100%;
     height: 437px;
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
 }

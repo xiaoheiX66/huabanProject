@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2998256_kmrez03r6zs.css">
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script src="../jquery/jquery.min.js"></script>
+    <script src="../js/cookie.js"></script>
     <link rel="stylesheet" href="../css/headsubcss.css">
     <link rel="stylesheet" href="../css/detailUsers.css">
     <title>作者</title>
@@ -109,13 +110,28 @@
 
   <script src="../js/tempMiddle.js"></script>
   <script>
+    //   设计服务业跳转
       $(".designServer").click(function(){
           window.location.href="./list.html"
       })
+    //   设计师跳转
       $(".designErs").click(function(){
           window.location.href="./designErs.html"
       })
 
+    //   获取cookie渲染
+      let subRes = getCookie("username")
+      if(!subRes){
+        alert("您还未登录！请先登录");
+        window.location.href = "./list.html"
+      }else{
+         $(".comeBtnback").text("@"+subRes).css({"border-bottom":"4px solid #aaa","font-size":"15px"}) 
+      }
+    //   点击退出回到设计服务页
+    $(".registrback").click(function(){
+        deleteCookie(`username=${username.value},-1`)
+        window.location.href = "./list.html"
+    })
       window.onload = function(e){
         let res = location.search.match(/\?id=(\w+)/)
         console.log("res",res[1]);

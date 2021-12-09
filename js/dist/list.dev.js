@@ -100,7 +100,7 @@ nav_list.onclick = function (e) {
             price = "\uFFE5".concat(item.price, "/\u5355");
           }
 
-          return str += "\n                        <dl>\n                        <dt>\n                            <a href=\"./detail.html?".concat(item.service_id, "\">\n                        <img src=\"https://muse-img.huabanimg.com/").concat(item.cover[0].key, "_/both/280x280\" alt=\"\"></a>\n                     </dt>\n                        <dd>").concat(item.name, "</dd>\n                        \n                     <dd><a style=\"width:30%;height:100%;display:flex;\n                        justify-content:center;align-items:center;border-top:1px solid #ddd;color:black\n                        \">").concat(price, "</a></dd>\n                         </dl>\n                        ");
+          return str += "\n                        <dl style=\"width:383px;height:600px\">\n                        <dt>\n                            <a href=\"./detail.html?".concat(item.service_id, "\">\n                        <img src=\"https://muse-img.huabanimg.com/").concat(item.cover[0].key, "_/both/280x280\" alt=\"\"></a>\n                     </dt>\n                        <dd>").concat(item.name, "</dd>\n                        \n                     <dd><a style=\"width:30%;height:100%;display:flex;\n                        justify-content:center;align-items:center;border-top:1px solid #ddd;color:black\n                        \">").concat(price, "</a></dd>\n                         </dl>\n                        ");
         });
         list.innerHTML = str;
         getListData({
@@ -125,7 +125,7 @@ nav_list.onclick = function (e) {
           price = "\uFFE5".concat(item.price, "/\u5355");
         }
 
-        return str += "\n                        <dl>\n                        <dt>\n                            <a href=\"./detail.html?id=".concat(item.service_id, "\">\n                        <img src=\"https://muse-img.huabanimg.com/").concat(item.cover[0].key, "_/both/280x280\" alt=\"\">\n                        </a>\n                     </dt>\n                        <dd>").concat(item.name, "</dd>\n                       \n                     <dd><a style=\"width:30%;height:100%;display:flex;\n                        justify-content:center;align-items:center;border-top:1px solid #ddd;color:black\n                        \">").concat(price, "</a></dd>\n                         </dl>\n                        ");
+        return str += "\n                        <dl style=\"width:383px;height:600px\">\n                        <dt>\n                            <a href=\"./detail.html?id=".concat(item.service_id, "\">\n                        <img src=\"https://muse-img.huabanimg.com/").concat(item.cover[0].key, "_/both/280x280\" alt=\"\">\n                        </a>\n                     </dt>\n                        <dd>").concat(item.name, "</dd>\n                       \n                     <dd><a style=\"width:30%;height:100%;display:flex;\n                        justify-content:center;align-items:center;border-top:1px solid #ddd;color:black\n                        \">").concat(price, "</a></dd>\n                         </dl>\n                        ");
       });
       list.innerHTML = str;
     });
@@ -162,7 +162,7 @@ nav_list2.onclick = function (e) {
           price = "\uFFE5".concat(item.price, "/\u5355");
         }
 
-        return str += "\n                        <dl>\n                        <dt>\n                            <a href=\"./detail.html?id=".concat(item.service_id, "\">\n                        <img src=\"https://muse-img.huabanimg.com/").concat(item.cover[0].key, "_/both/280x280\" alt=\"\">\n                        </a>\n                     </dt>\n                        <dd>").concat(item.name, "</dd>\n                       \n                     <dd><a style=\"width:30%;height:100%;display:flex;\n                        justify-content:center;align-items:center;border-top:1px solid #ddd;color:black\n                        \">").concat(price, "</a></dd>\n                         </dl>\n                        ");
+        return str += "\n                        <dl style=\"width:383px;height:600px\">\n                        <dt>\n                            <a href=\"./detail.html?id=".concat(item.service_id, "\">\n                        <img src=\"https://muse-img.huabanimg.com/").concat(item.cover[0].key, "_/both/280x280\" alt=\"\">\n                        </a>\n                     </dt>\n                        <dd>").concat(item.name, "</dd>\n                       \n                     <dd><a style=\"width:30%;height:100%;display:flex;\n                        justify-content:center;align-items:center;border-top:1px solid #ddd;color:black\n                        \">").concat(price, "</a></dd>\n                         </dl>\n                        ");
       });
       list.innerHTML = str;
       localStorage.setItem("sub_category", sub_category);
@@ -212,7 +212,7 @@ function allData(res1) {
       price = "\uFFE5".concat(item.price, "/").concat(item.unit);
     }
 
-    return "\n                        <dl>\n                        <dt>\n                            <a href=\"./detail.html?id=".concat(item.service_id, "\">\n                        <img src=\"https://muse-img.huabanimg.com/").concat(item.cover[0].key, "_/both/280x280\" alt=\"\"></a>\n                     </dt>\n                        <dd>").concat(item.name, "</dd>\n                     <dd><a style=\"width:30%;height:100%;display:flex;\n                        justify-content:center;align-items:center;border-top:1px solid #ddd;color:black\n                        \">").concat(price, "</a></dd>\n                         </dl>\n                        ");
+    return "\n                        <dl style=\"width:383px;height:600px\">\n                        <dt>\n                            <a href=\"./detail.html?id=".concat(item.service_id, "\">\n                        <img src=\"https://muse-img.huabanimg.com/").concat(item.cover[0].key, "_/both/280x280\" alt=\"\"></a>\n                     </dt>\n                        <dd>").concat(item.name, "</dd>\n                     <dd><a style=\"width:30%;height:100%;display:flex;\n                        justify-content:center;align-items:center;border-top:1px solid #ddd;color:black\n                        \">").concat(price, "</a></dd>\n                         </dl>\n                        ");
   }).join("");
   list.innerHTML = str;
 } // 顶部稀烂
