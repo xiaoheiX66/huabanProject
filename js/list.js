@@ -4,6 +4,7 @@ localStorage.clear();
 let nav_list = document.querySelector(".nav_list")
 let nav_list2 = document.querySelector(".nav_list2")
 let nav_sub = document.querySelector(".nav_sub")
+let nav_down = document.querySelector(".nav_down")
 let list = document.querySelector(".list")
 let submitTop = document.querySelector(".submitTop")
 let registrTop = document.querySelector(".registrTop")
@@ -61,6 +62,7 @@ function nav() {
         let str = "";
         let res1 = JSON.parse(res)
         res1.forEach((item, index) => {
+            
             return str += `
                     <a class="item" style="cursor:pointer;" href="#" index=${index}  data=${item.category}>${item.name}</a>
                     `
@@ -74,9 +76,10 @@ function nav() {
 }
 
 nav_list.onclick = function (e) {
-    if (e.target.className == 'item') {
+    if (e.target.classList.contains("item")){
         let category = e.target.getAttribute('data')
-        $(this).addClass("active")
+        document.querySelector(".active").classList.remove("active")
+        e.target.classList.add("active")
         console.log("this===",$(this));
 
         if (!category) {
@@ -145,19 +148,28 @@ nav_list.onclick = function (e) {
         let index = e.target.getAttribute('index')
         // 子类进行渲染,缓存渲染
         let res1 = JSON.parse(localStorage.getItem("navData"));
+        renderSonData(res1)
+       function renderSonData(res1){
+           console.log("之类内容",res1);
+           nav_down.style.display = "none"
+           nav_sub.style.display = "block";
+           nav_sub.style.background = "#ffffff";
         let str = "";
         res1[index].sub.forEach((item) => {
             return str += `
             <a class="item1" style="cursor:pointer;
-           margin-left:10px;color:black;
+           margin-left:10px;text-align:center;
             " href="#" category=${category} sub_category=${item.sub_category}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${item.name}</a>
             `
         })
         nav_list2.innerHTML = str;
+       }
     }
 }
 nav_list2.onclick = function (e) {
-    if (e.target.className == 'item1') {
+    if (e.target.classList.contains("item1")) {
+        document.querySelector(".active").classList.remove("active")
+        e.target.classList.add("active")
         let sub_category = e.target.getAttribute('sub_category')
         let category = e.target.getAttribute('category')
         pAjax({

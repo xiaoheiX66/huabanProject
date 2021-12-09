@@ -1,0 +1,3 @@
+# 写啥git忽略管理啥
+pack-lock.json
+/node_modules

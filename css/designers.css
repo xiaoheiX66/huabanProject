@@ -20,13 +20,13 @@ a {
 }
 .item{
     text-align: center;
+    color: #bbb;
     width: 150px;
     align-self: flex-end;
     transition: all .3s;
 }
-.item:hover{
-   border-bottom: 3px solid chocolate;
-   color: chocolate;
+.item:nth-child(1){
+   color: grey;
 }
 
 .listUser {
@@ -150,4 +150,7 @@ a {
 }
 .active{
     color: chocolate;
+}
+.active2{
+    color: orange;
 }

@@ -107,6 +107,7 @@
         </div>
   </div>
 
+  <script src="../js/tempMiddle.js"></script>
   <script>
       $(".designServer").click(function(){
           window.location.href="./list.html"
@@ -132,7 +133,7 @@
                 // console.log("res1",res1);
                 let str = "";
                 res1.map((item,index)=>{
-                   
+                   console.log("详情页数据item",item);
                      return str +=`
                     <div class="intoduceLeft">
                         <dl>
@@ -150,7 +151,7 @@
                         </dl>
                    </div>&nbsp;&nbsp;&nbsp;&nbsp;
                    <div class="intoduceRight">
-                    <p><i>&nbsp;<i class="iconfont icon-naozhong"></i>&nbsp;平均响应时间</i><i>18天15时20分53秒&nbsp;&nbsp;</i></p>
+                    <p><i>&nbsp;<i class="iconfont icon-naozhong"></i>&nbsp;平均响应时间</i><i>${transTime(item.extra.response_time)}&nbsp;&nbsp;</i></p>
                     <p><i>&nbsp;<i class="iconfont icon-shimingrenzheng" style="font-size:20px"></i>&nbsp;实名认证</i><i>已认证&nbsp;&nbsp;</i></p>
                     <p><i>&nbsp;<i class="iconfont icon-pingjia"></i>&nbsp;评价</i>
                         <i style="color:orange">&nbsp;
@@ -273,10 +274,12 @@
                         <div class="originnalDatass">
                 <div class="originnalInbox">
                     <p><span class="leftInbox">所在地</span><span class="rightInbox">${item.city}</span></p>
-                    <p><span class="leftInbox">擅长领域</span><span class="rightInbox">${item.category[index]}</span></p>
+                    <p><span class="leftInbox">擅长领域</span><span class="rightInbox">${item.category.map((value)=>{
+                        return `<i>${info[value]}&nbsp;、&nbsp;</i>`
+                    }).join("")}</span></p>
                     <p><span class="leftInbox">实名认证</span><span class="rightInbox">实名认证</span></p>
                     <p><span class="leftInbox">评价</span><span class="rightInbox">${item.status}</span></p>
-                    <p><span class="leftInbox">响应时间</span><span class="rightInbox">18天15时20分53秒</span></p>
+                    <p><span class="leftInbox">响应时间</span><span class="rightInbox">${transTime(item.extra.response_time)}</span></p>
                     <p><span class="leftInbox">个人简介</span><span  class="rightInbox">
                        ${item.desc}
                     </span><span style="width:10px;height:100%"></span></p>

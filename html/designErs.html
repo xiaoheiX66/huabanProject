@@ -44,10 +44,10 @@
                 </div>
             </section>
         </div>
-        <div class="nav" style="height: 116px;">
+        <div class="nav" style="height: 116px;background-color: #ffffff;">
             <div class="nav1" style="border-bottom: 0px;">
-                <div class="content" style="background-color: #ffffff;">
-                    <div class="label">分类:</div>
+                <div class="content">
+                    <div class="label" style="font-size: 18px;padding: 0px 5px;">分类:</div>
                     <nav class="nav_list" style="height: 100px;">
                         <!-- <a class="item" href="/services/">全部</a> -->
                         <!-- <a class="item item2">全部</a> -->
@@ -106,7 +106,10 @@
             </div>
         </div>
   </div>
+    <script src="../js/tempMiddle.js"></script>
         <script>
+            let nav_list = document.querySelector(".nav_list")
+
             $(".designServer").click(function () {
                 window.location.href = "./list.html"
             })
@@ -130,8 +133,10 @@
             }
             // 全部与分类渲染
             $(".nav_list").click(function (e) {
-                if (e.target.className === "item") {
-                    $(this).addClass("active").siblings().removeClass()
+                if (e.target.className == "item") {
+                    let active = nav_list.querySelector(".active")
+                active && active.classList.remove("active")
+               e.target.classList.add("active")
                     let category = e.target.getAttribute("data")
                     if (!category) {
                         renderAll()
@@ -153,11 +158,13 @@
                             </dd>
                             <dd>
                                 <p>${item.service_count}个设计服务</p>
-                                <p>评价:<i style="color:red">☆☆☆☆☆</i></p>
+                                ${item.extra.rating?`<p>评价:&nbsp;&nbsp;<i style="color:red">${renderXing(item.extra.rating)}</i></p>`:""}
+                                
                             </dd>
-                            <dd>
-                                <i>平面设计师</i>
-                                <i>插画师</i>
+                            <dd style="font-weight:bold">
+                               ${item.category.map((value)=>{
+                                   return `<i>${info[value]}</i>`;
+                               }).join("")}
                             </dd>
                         </dl>
                          </div>
@@ -179,7 +186,9 @@
                         }
                     })
                 }
+            
             })
+            
             // 默认请求排列
 
             renderAll()
@@ -201,18 +210,12 @@
                             </dd>
                             <dd>
                                 <p>${item.service_count}个设计服务</p>
-                                <p>评价:
-                                    <i style="color:orange">&nbsp;
-                        <i class="iconfont icon-wujiaoxing-"></i>&nbsp;<i class="iconfont icon-wujiaoxing-">
-                            </i>&nbsp;<i class="iconfont icon-wujiaoxing-"></i>&nbsp;<i class="iconfont icon-wujiaoxing-">
-                                </i>&nbsp;<i class="iconfont icon-wujiaoxing-">
-                                    </i>
-                        &nbsp;&nbsp;</i>
-                                    </p>
+                                ${item.extra.rating?`<p>评价:&nbsp;&nbsp;<i style="color:red">${renderXing(item.extra.rating)}</i></p>`:""}
                             </dd>
-                            <dd>
-                                <i>平面设计师</i>
-                                <i>插画师</i>
+                            <dd style="font-weight:bold">
+                                ${item.category.map((value)=>{
+                                   return `<i>${info[value]}</i>`;
+                               }).join("")}
                             </dd>
                         </dl>
                     </div> 

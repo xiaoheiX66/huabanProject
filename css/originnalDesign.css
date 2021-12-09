@@ -229,8 +229,8 @@ ul,li{
 }
 
 #pageBox footer .bottomFooters div:nth-of-type(2) .topdiv{
-   width: 275px;
-   height: 42px;
+   width: 320px;
+   height: 60px;
    margin-top:0px;
    display: flex;
    align-items: center;
@@ -238,7 +238,7 @@ ul,li{
    background-color: #fafafa;
 }
 #pageBox footer .bottomFooters div:nth-of-type(2) .topdiv p{
-    width: 200px;
+    width: 250px;
     height: 42px;
     margin-left: 25px;
     display: flex;

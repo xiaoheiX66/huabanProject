@@ -2,8 +2,39 @@
     display: none;
 }
 
-
-
+.box .nav_sub{
+    display: none;
+    background-color: #eee;
+}
+.box .nav_down{
+    width: 100%;
+    height: 90px;
+    border-bottom: 3px solid #ffffff;
+    display: flex;
+    font-size: 19px;
+    justify-content: space-between;
+    align-items: center;
+}
+.box .nav_down section:nth-child(1){
+    width: 300px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.box .nav_down section:nth-child(2){
+    width: 270px;
+    display: flex;
+}
+.box .nav_down section:nth-child(2) .toggle.checkbox{
+    width: 65px;height: 30px;
+    margin-left: 17px;
+    background-color: coral;
+}
+.box .nav_down section:nth-child(2) .toggle.checkbox>img{
+   width: 100%;
+   height: 100%;
+}
 .box .list {
     flex: 1;
     width: 80%;
@@ -15,7 +46,9 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
+.iconfont.iSize{
+    font-size: 22px;
+}
 .box .list dl {
     width: 300px;
     height: 400px;
@@ -74,11 +107,13 @@ a {
     font-size: 18px;
     transition: all .3s;
 }
-
-.item:hover {
-
-    color: tomato;
-    border-bottom: 3px solid tomato;
+.item1{
+    color: black;
+}
+.item:nth-child(1),
+.item1:nth-child(1)
+{
+    color: #bbb;
 }
 
 button {
@@ -91,9 +126,13 @@ img {
 }
 
 .active {
+    font-size: 19px;
+   color: chocolate;
+}
+.active2 {
+   color: chocolate;
     border-bottom: 2px solid chocolate;
 }
-
 /* 登录 */
 #formParentTop {
     position: fixed;

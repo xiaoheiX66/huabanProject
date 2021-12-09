@@ -29,10 +29,7 @@ window.onload = function () {
     pAjax({
         url: `https://muse.huaban.com/api/v2/services/${id}`,
     }).then((res) => {
-        console.log("res",res);
         let res1 = JSON.parse(res);
-        console.log(res1);
-
         let str = "";
         let str2 = "";
         let str3 = "";
@@ -68,30 +65,9 @@ window.onload = function () {
         // console.log("res1.complete_in",res1.complete_in.number);
         res1.cover.forEach((item, index) => {
             console.log('item=',res1.created_at);
-           
             console.log('responsetime',res1.user.extra.response_time);
-            let res = (res1.user.extra.response_time /(60*60*24))
             
-            console.log('dateres=',res);
-            let dayline = (res1.user.extra.response_time /(60*60*24))
-            let middline = res1.user.extra.response_time;
-            let hours;
-            let seconds;
-           
-            // 1511339383
-            if(dayline >= 1){
-                dayline = parseInt(dayline);
-                hours = parseInt((middline-(60*60*24*dayline))/(60*60))
-                seconds = parseInt((middline-(60*60*24*dayline+60*60*hours))/60);
-                thirds = (middline-(60*60*24*dayline+60*60*hours+60*seconds))
-            }else{
-                hours1 = parseInt(middline/(60*60))
-                seconds1 = parseInt((middline-(60*60*hours))/60)
-                thirds1 = parseInt(middline-(60*60*hours+60*seconds))
-            }
-            
-            // let days = 
-           
+            console.log('dateres=',JSON.parse(res));
             // console.log('thirds',thirds);
             let price;
             if (res1.price == 0) {
@@ -150,7 +126,7 @@ window.onload = function () {
                 <img src="https://hbimg.huabanimg.com/${res1.user.avatar.key}_/both/70x70" alt="" style="width: 35%;height: 65%;">
                 <span style="width: 150px;height: 65%;display: flex;flex-direction: column;">
                 <i style="height: 50%;font-size: 24px;line-height: 60px;font-style: normal;text-align: center;">${res1.user.username}</i>
-                <i style="width:100px;margin-left:10px;border-radious:5px;height: 50%;font-size: 17px;font-style: normal;line-height: 50px;background-color: #bbb;text-align: center;"><i class="iconfont icon-liaotian"></i>聊天</i>
+                <i style="width:100px;margin-left:10px;border-radious:5px;height: 50%;font-size: 17px;font-style: normal;line-height: 50px;background-color: #bbb;text-align: center;"><i class="iconfont icon-liaotian" style="font-size:22px"></i>聊天</i>
                 </span>
                 </p>
                 <p
@@ -158,7 +134,7 @@ window.onload = function () {
                 font-size: 18px;color: #aaa;
                 "
                 >
-                <span style="height: 50%;line-height: 110px;"><i class="iconfont icon-naozhong" style="font-size:18px;font-weight:bold"></i>&nbsp;平均响应时间<i style="width:60%;text-align:right;overflow:hidden">3天5时13分29秒</i></span>
+                <span style="height: 50%;line-height: 110px;"><i class="iconfont icon-naozhong" style="font-size:18px;font-weight:bold"></i>&nbsp;平均响应时间<i style="width:60%;text-align:right;overflow:hidden">${transTime(res1.user.extra.response_time)}</i></span>
                 <span style="height: 50%;line-height: 50px;"><i class="iconfont icon-shenfenzhengrenzheng" style="font-size:18px;font-weight:bold"></i>&nbsp;实名认证<i style="width:60%;text-align:right;overflow:hidden">已认证</i></span>
                 </p>
                 <p

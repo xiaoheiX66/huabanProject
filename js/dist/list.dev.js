@@ -6,6 +6,7 @@ localStorage.clear(); // 首页内容渲染
 var nav_list = document.querySelector(".nav_list");
 var nav_list2 = document.querySelector(".nav_list2");
 var nav_sub = document.querySelector(".nav_sub");
+var nav_down = document.querySelector(".nav_down");
 var list = document.querySelector(".list");
 var submitTop = document.querySelector(".submitTop");
 var registrTop = document.querySelector(".registrTop"); // 登录前
@@ -66,9 +67,22 @@ function nav() {
 }
 
 nav_list.onclick = function (e) {
-  if (e.target.className == 'item') {
+  if (e.target.classList.contains("item")) {
+    var renderSonData = function renderSonData(res1) {
+      console.log("之类内容", res1);
+      nav_down.style.display = "none";
+      nav_sub.style.display = "block";
+      nav_sub.style.background = "#ffffff";
+      var str = "";
+      res1[index].sub.forEach(function (item) {
+        return str += "\n            <a class=\"item1\" style=\"cursor:pointer;\n           margin-left:10px;text-align:center;\n            \" href=\"#\" category=".concat(category, " sub_category=").concat(item.sub_category, ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").concat(item.name, "</a>\n            ");
+      });
+      nav_list2.innerHTML = str;
+    };
+
     var category = e.target.getAttribute('data');
-    $(this).addClass("active");
+    document.querySelector(".active").classList.remove("active");
+    e.target.classList.add("active");
     console.log("this===", $(this));
 
     if (!category) {
@@ -119,16 +133,14 @@ nav_list.onclick = function (e) {
     var index = e.target.getAttribute('index'); // 子类进行渲染,缓存渲染
 
     var res1 = JSON.parse(localStorage.getItem("navData"));
-    var str = "";
-    res1[index].sub.forEach(function (item) {
-      return str += "\n            <a class=\"item1\" style=\"cursor:pointer;\n           margin-left:10px;color:black;\n            \" href=\"#\" category=".concat(category, " sub_category=").concat(item.sub_category, ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").concat(item.name, "</a>\n            ");
-    });
-    nav_list2.innerHTML = str;
+    renderSonData(res1);
   }
 };
 
 nav_list2.onclick = function (e) {
-  if (e.target.className == 'item1') {
+  if (e.target.classList.contains("item1")) {
+    document.querySelector(".active").classList.remove("active");
+    e.target.classList.add("active");
     var sub_category = e.target.getAttribute('sub_category');
     var category = e.target.getAttribute('category');
     pAjax({
